@@ -19,6 +19,7 @@
             --border-glass: rgba(255, 255, 255, 0.1);
             --shadow-neon: 0 0 20px rgba(0, 229, 255, 0.2);
             --error-red: #ef4444;
+            --neon-purple: #a855f7;
         }
 
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
@@ -52,7 +53,7 @@
         .logo { font-size: 1.5rem; font-weight: 800; cursor: pointer; display: flex; align-items: center; gap: 10px; color: white; letter-spacing: 1px;}
         .logo i { color: var(--neon-cyan); font-size: 1.8rem; }
 
-        .nav-right { display: flex; gap: 1rem; align-items: center; }
+        .nav-right { display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap; }
         .nav-btn {
             background: rgba(255,255,255,0.05); border: 1px solid var(--border-glass); color: white;
             padding: 0.6rem 1.2rem; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: bold;
@@ -62,7 +63,7 @@
         /* === СИСТЕМА СТРАНИЦ === */
         .page { display: none; flex-grow: 1; animation: fadeIn 0.4s ease; }
         .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
 
         /* === 1. LANDING PAGE === */
         .hero { max-width: 1200px; margin: 4rem auto 2rem auto; text-align: center; padding: 0 2rem; }
@@ -75,10 +76,7 @@
         .stat-item p { color: var(--text-muted); font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; }
 
         .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; text-align: left; }
-        .feature-card {
-            background: var(--bg-panel); border: 1px solid var(--border-glass); padding: 2rem; border-radius: 16px;
-            backdrop-filter: blur(10px); transition: 0.4s; position: relative; overflow: hidden; cursor: pointer;
-        }
+        .feature-card { background: var(--bg-panel); border: 1px solid var(--border-glass); padding: 2rem; border-radius: 16px; backdrop-filter: blur(10px); transition: 0.4s; position: relative; overflow: hidden; cursor: pointer; }
         .feature-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 4px; background: transparent; transition: 0.4s; }
         .feature-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-neon); border-color: rgba(0, 229, 255, 0.3); }
         .feature-card:hover::before { background: var(--neon-cyan); }
@@ -86,11 +84,10 @@
         .feature-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: white; }
         .feature-card p { color: var(--text-muted); font-size: 0.95rem; line-height: 1.5; }
 
-        /* === 2. МЕГА-ПАНЕЛЬ УЧИТЕЛЯ (TEACHER DASHBOARD) === */
+        /* === 2. МЕГА-ПАНЕЛЬ УЧИТЕЛЯ === */
         .dashboard-layout { display: grid; grid-template-columns: 280px 1fr 300px; min-height: calc(100vh - 75px); }
         @media(max-width: 1024px) { .dashboard-layout { grid-template-columns: 250px 1fr; } .right-sidebar { display: none; } }
         
-        /* Левый сайдбар */
         .left-sidebar { background: var(--bg-darker); border-right: 1px solid var(--border-glass); padding: 1.5rem; display: flex; flex-direction: column; }
         .sidebar-title { font-size: 0.8rem; text-transform: uppercase; color: var(--text-muted); letter-spacing: 1px; margin-bottom: 1rem; margin-top: 1.5rem; }
         .history-list { display: flex; flex-direction: column; gap: 0.5rem; }
@@ -98,58 +95,40 @@
         .history-item:hover { background: rgba(255,255,255,0.05); color: var(--neon-cyan); }
         .history-item i { margin-right: 8px; color: var(--text-muted); }
 
-        /* Центральная рабочая зона */
         .main-workspace { padding: 2rem; display: flex; flex-direction: column; height: 100%; }
-        
         .workspace-tabs { display: flex; gap: 0.5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 1rem; overflow-x: auto;}
         .tab-btn { background: transparent; border: none; color: var(--text-muted); padding: 0.5rem 1rem; font-size: 1rem; cursor: pointer; border-radius: 8px; display: flex; align-items: center; gap: 8px; transition: 0.3s; white-space: nowrap;}
         .tab-btn:hover { background: rgba(255,255,255,0.05); color: white; }
         .tab-btn.active-tab { background: rgba(0, 229, 255, 0.15); color: var(--neon-cyan); border: 1px solid rgba(0, 229, 255, 0.3); }
 
-        /* Окно вывода ИИ */
         .ai-output-area { flex-grow: 1; background: #0a0f16; border: 1px solid var(--border-glass); border-radius: 12px; padding: 2rem; margin-bottom: 1.5rem; overflow-y: auto; font-size: 1.05rem; line-height: 1.6; box-shadow: inset 0 0 20px rgba(0,0,0,0.5); min-height: 300px; }
         .ai-message { border-left: 3px solid var(--neon-cyan); padding-left: 1rem; margin-bottom: 1rem; }
         
-        /* === ФОРМА УЧИТЕЛЯ (Восстановленная) === */
         .generator-controls { background: var(--bg-panel); border: 1px solid var(--border-glass); border-radius: 12px; padding: 1.5rem; backdrop-filter: blur(10px); }
         .control-row { display: flex; gap: 1rem; margin-bottom: 1rem; flex-wrap: wrap; }
         .control-group { flex: 1; min-width: 150px; }
         .control-label { display: block; font-size: 0.85rem; color: var(--text-muted); margin-bottom: 5px; font-weight: bold; }
-        
-        .control-input, .control-select { 
-            width: 100%; padding: 12px; background: rgba(0,0,0,0.4); 
-            border: 1px solid var(--border-glass); color: white; 
-            border-radius: 8px; font-size: 1rem; transition: 0.3s; 
-        }
+        .control-input, .control-select { width: 100%; padding: 12px; background: rgba(0,0,0,0.4); border: 1px solid var(--border-glass); color: white; border-radius: 8px; font-size: 1rem; transition: 0.3s; }
         .control-input:focus, .control-select:focus { outline: none; border-color: var(--neon-cyan); box-shadow: 0 0 10px rgba(0, 229, 255, 0.2); }
         
-        .btn-generate { 
-            background: var(--neon-cyan); color: #000; border: none; 
-            padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; 
-            transition: 0.3s; display: flex; align-items: center; justify-content: center; 
-            font-size: 1.1rem; width: 100%; gap: 10px; text-transform: uppercase;
-        }
+        .btn-generate { background: var(--neon-cyan); color: #000; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; width: 100%; gap: 10px; text-transform: uppercase; }
         .btn-generate:hover { background: #00c4dd; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4); }
 
-        /* Правый сайдбар */
         .right-sidebar { background: var(--bg-darker); border-left: 1px solid var(--border-glass); padding: 1.5rem; display: flex; flex-direction: column; gap: 2rem;}
         .export-box { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; }
         .btn-export { background: transparent; border: 1px solid var(--border-glass); color: white; padding: 10px; border-radius: 8px; cursor: pointer; display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 0.85rem; transition: 0.3s; }
         .btn-export i { font-size: 1.2rem; }
         .btn-export:hover { background: rgba(255,255,255,0.05); border-color: white; }
-        .btn-export.pdf:hover { border-color: #ef4444; color: #ef4444; }
-        .btn-export.word:hover { border-color: #3b82f6; color: #3b82f6; }
 
         .template-list { display: flex; flex-direction: column; gap: 0.8rem; }
         .template-btn { background: rgba(255,255,255,0.03); border: 1px solid var(--border-glass); color: #cbd5e1; padding: 12px; border-radius: 8px; text-align: left; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; font-size: 0.95rem; }
         .template-btn:hover { background: rgba(0, 229, 255, 0.1); border-color: var(--neon-cyan); color: white; padding-left: 15px; }
 
-        /* === 3. ОКУШЫ БӨЛІМІ (Student Escape Room) === */
+        /* === 3. ОҚУШЫ БӨЛІМІ === */
         .student-dashboard { max-width: 900px; margin: 2rem auto; display: flex; flex-direction: column; gap: 1.5rem; padding: 0 1rem; }
         .code-slots { display: flex; justify-content: center; gap: 15px; margin: 1rem 0 2rem 0; }
         .slot { width: 60px; height: 70px; background: #000; border: 2px solid var(--border-glass); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: var(--btn-yellow); font-family: 'Courier New', monospace; box-shadow: inset 0 0 15px rgba(0,0,0,0.8); }
         .slot.filled { border-color: var(--neon-green); color: var(--neon-green); text-shadow: 0 0 15px var(--neon-green); }
-        
         .room-main { background: var(--bg-panel); padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border-glass); backdrop-filter: blur(10px); }
         .student-input-group { display: flex; gap: 10px; margin-top: 1.5rem; }
         .student-input-group input { flex-grow: 1; padding: 15px; background: rgba(0,0,0,0.5); border: 1px solid var(--border-glass); color: white; border-radius: 8px; font-size: 1.1rem; }
@@ -157,7 +136,45 @@
         .btn-action { background: var(--btn-yellow); color: black; font-weight: bold; border: none; padding: 0 30px; border-radius: 8px; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
         .btn-action:hover { background: #e09e1f; }
 
-        /* === FOOTER (Восстановленный с контактами) === */
+        /* === 4. AI ВИДЕО СТУДИЯСЫ (ЖАҢА СУПЕР БӨЛІМ) === */
+        .video-dashboard { max-width: 1100px; margin: 2rem auto; padding: 0 1rem; }
+        .video-header { text-align: center; margin-bottom: 2rem; }
+        .video-header h2 { font-size: 2.5rem; color: white; margin-bottom: 0.5rem; }
+        .video-header span { color: var(--neon-purple); }
+        
+        /* Видео генератор жолағы */
+        .video-generator-bar { display: flex; gap: 10px; background: rgba(0,0,0,0.4); border: 1px solid var(--neon-purple); padding: 10px; border-radius: 50px; margin-bottom: 3rem; box-shadow: 0 0 15px rgba(168, 85, 247, 0.2); backdrop-filter: blur(5px); }
+        .video-generator-bar input { flex-grow: 1; background: transparent; border: none; color: white; padding: 0 20px; font-size: 1.1rem; outline: none; }
+        .btn-ai-video { background: var(--neon-purple); color: white; border: none; padding: 12px 30px; border-radius: 30px; font-weight: bold; font-size: 1rem; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 8px; }
+        .btn-ai-video:hover { background: #9333ea; box-shadow: 0 0 15px var(--neon-purple); }
+
+        /* Басты Видео (Featured) */
+        .featured-video { width: 100%; height: 450px; background: linear-gradient(45deg, rgba(6,28,19,0.9), rgba(168,85,247,0.4)), url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000') center/cover; border-radius: 20px; border: 1px solid var(--border-glass); display: flex; flex-direction: column; justify-content: center; align-items: center; position: relative; overflow: hidden; margin-bottom: 2.5rem; box-shadow: 0 15px 35px rgba(0,0,0,0.5); }
+        .play-pulse { width: 80px; height: 80px; background: rgba(255,255,255,0.2); backdrop-filter: blur(10px); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; animation: pulsePlay 2s infinite; border: 2px solid white; transition: 0.3s; z-index: 2; }
+        .play-pulse i { font-size: 2.5rem; color: white; margin-left: 5px; }
+        .play-pulse:hover { transform: scale(1.1); background: var(--neon-cyan); border-color: var(--neon-cyan); animation: none; }
+        @keyframes pulsePlay { 0% {box-shadow: 0 0 0 0 rgba(0,229,255,0.6)} 70% {box-shadow: 0 0 0 20px rgba(0,229,255,0)} 100% {box-shadow: 0 0 0 0 rgba(0,229,255,0)} }
+        
+        .featured-info { position: absolute; bottom: 0; left: 0; width: 100%; padding: 2rem; background: linear-gradient(to top, rgba(0,0,0,0.9), transparent); z-index: 1; }
+        .ai-badge { background: var(--neon-purple); color: white; font-size: 0.8rem; padding: 4px 10px; border-radius: 4px; font-weight: bold; letter-spacing: 1px; margin-bottom: 10px; display: inline-block; }
+        .featured-info h3 { font-size: 2rem; color: white; margin-bottom: 5px; }
+        
+        /* Видео Галерея (Сетка) */
+        .video-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+        .video-card { background: var(--bg-panel); border: 1px solid var(--border-glass); border-radius: 12px; overflow: hidden; cursor: pointer; transition: 0.3s; }
+        .video-card:hover { transform: translateY(-5px); border-color: var(--neon-cyan); box-shadow: 0 10px 20px rgba(0,0,0,0.4); }
+        .video-thumb { height: 180px; background: #111; position: relative; display: flex; align-items: center; justify-content: center; }
+        .video-thumb.t1 { background: linear-gradient(45deg, #0f172a, #1e3a8a); }
+        .video-thumb.t2 { background: linear-gradient(45deg, #064e3b, #047857); }
+        .video-thumb.t3 { background: linear-gradient(45deg, #4c1d95, #7e22ce); }
+        .video-thumb i { font-size: 3rem; color: rgba(255,255,255,0.5); transition: 0.3s; }
+        .video-card:hover .video-thumb i { color: white; transform: scale(1.2); }
+        .video-time { position: absolute; bottom: 10px; right: 10px; background: rgba(0,0,0,0.8); color: white; font-size: 0.8rem; padding: 3px 8px; border-radius: 4px; font-family: monospace; }
+        .video-details { padding: 1.2rem; }
+        .video-details h4 { font-size: 1.1rem; color: white; margin-bottom: 8px; }
+        .video-details p { font-size: 0.9rem; color: var(--text-muted); }
+
+        /* === FOOTER === */
         footer { background-color: var(--bg-darker); padding: 3rem 1rem 1.5rem 1rem; text-align: center; margin-top: auto; border-top: 1px solid var(--border-glass); }
         .footer-logo { font-size: 1.8rem; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 1rem; color: white;}
         .footer-logo i { color: var(--neon-green); }
@@ -178,23 +195,18 @@
         </div>
         <div class="nav-right">
             <button class="nav-btn active-nav" id="nav-landing" onclick="switchPage('landing')">Басты бет</button>
-            <button class="nav-btn" id="nav-student" onclick="switchPage('student')"><i class="fas fa-gamepad"></i> Оқушы (Escape)</button>
-            <button class="nav-btn" id="nav-teacher" onclick="switchPage('teacher')"><i class="fas fa-magic"></i> Мұғалім генераторы</button>
+            <button class="nav-btn" id="nav-student" onclick="switchPage('student')"><i class="fas fa-gamepad"></i> Оқушы</button>
+            <button class="nav-btn" id="nav-teacher" onclick="switchPage('teacher')"><i class="fas fa-magic"></i> Мұғалім PRO</button>
+            <button class="nav-btn" id="nav-video" onclick="switchPage('video')" style="border-color: var(--neon-purple); color: var(--neon-purple);"><i class="fas fa-video"></i> ИИ Видео</button>
         </div>
     </header>
 
     <div id="landing" class="page active">
         <div class="hero">
             <h1>Химияны оқытудың <br><span>Жаңа Эволюциясы</span></h1>
-            <p>Оқушыларға арналған геймификацияланған квест-бөлмелер және мұғалімдерге арналған ең қуатты AI-генератор бір платформада.</p>
+            <p>Оқушыларға арналған геймификацияланған квест-бөлмелер, AI-видеолар және мұғалімдерге арналған ең қуатты генератор.</p>
             
-            <div class="hero-stats">
-                <div class="stat-item"><h3>10x</h3><p>Уақыт үнемдеу</p></div>
-                <div class="stat-item"><h3>100%</h3><p>Оқушы қызығушылығы</p></div>
-                <div class="stat-item"><h3>+500</h3><p>Дайын тапсырмалар</p></div>
-            </div>
-
-            <div class="features-grid">
+            <div class="features-grid" style="margin-top: 3rem;">
                 <div class="feature-card" onclick="switchPage('teacher')">
                     <i class="fas fa-bolt" style="color: var(--neon-cyan);"></i>
                     <h3>Ультра-Генератор</h3>
@@ -205,21 +217,23 @@
                     <h3>Escape Room Mode</h3>
                     <p>Оқушылар зертханадан қашып шығу үшін химиялық теңдеулер шешіп, кодтарды бұзады.</p>
                 </div>
+                <div class="feature-card" onclick="switchPage('video')">
+                    <i class="fas fa-film" style="color: var(--neon-purple);"></i>
+                    <h3>AI Видео Студия</h3>
+                    <p>Мәтін жазып, күрделі химиялық реакциялардың 3D модельденген видеоларын генерациялаңыз.</p>
+                </div>
             </div>
         </div>
     </div>
 
     <div id="teacher" class="page">
         <div class="dashboard-layout">
-            
             <div class="left-sidebar">
                 <button class="nav-btn" style="width: 100%; margin-bottom: 1rem; background: var(--neon-cyan); color: black;"><i class="fas fa-plus"></i> Жаңа сұраныс</button>
-                
                 <div class="sidebar-title">Соңғы жобалар</div>
                 <div class="history-list">
                     <div class="history-item"><i class="fas fa-comment-dots"></i> 8-сынып: Тұздар гидролизі...</div>
                     <div class="history-item"><i class="fas fa-file-alt"></i> 9-сынып ТЖБ спецификация...</div>
-                    <div class="history-item"><i class="fas fa-gamepad"></i> Escape Quest: Металдар...</div>
                 </div>
             </div>
 
@@ -248,35 +262,15 @@
                     <div class="control-row">
                         <div class="control-group">
                             <label class="control-label">Сынып:</label>
-                            <select id="lessonClass" class="control-select">
-                                <option>7 сынып</option>
-                                <option selected>8 сынып</option>
-                                <option>9 сынып</option>
-                                <option>10-11 сыныптар</option>
-                            </select>
+                            <select class="control-select"><option>8 сынып</option><option>9 сынып</option></select>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Қиындық деңгейі:</label>
-                            <select id="lessonDiff" class="control-select">
-                                <option>Жеңіл (Базалық)</option>
-                                <option selected>Орташа (Стандарт)</option>
-                                <option>Қиын (Олимпиадалық)</option>
-                            </select>
+                            <select class="control-select"><option>Орташа (Стандарт)</option></select>
                         </div>
                         <div class="control-group">
                             <label class="control-label">Бөлме саны:</label>
-                            <select id="lessonRooms" class="control-select">
-                                <option>3 бөлме</option>
-                                <option selected>4 бөлме</option>
-                                <option>5 бөлме</option>
-                            </select>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Тіл:</label>
-                            <select class="control-select">
-                                <option selected>Қазақша</option>
-                                <option>Орысша</option>
-                            </select>
+                            <select class="control-select"><option>4 бөлме</option></select>
                         </div>
                     </div>
 
@@ -292,16 +286,6 @@
                     <div class="export-box">
                         <button class="btn-export pdf" onclick="alert('PDF жүктелуде...')"><i class="fas fa-file-pdf"></i> PDF жүктеу</button>
                         <button class="btn-export word" onclick="alert('Word жүктелуде...')"><i class="fas fa-file-word"></i> Word (.docx)</button>
-                        <button class="btn-export" style="grid-column: span 2;" onclick="alert('Сілтеме көшірілді!')"><i class="fas fa-link"></i> Оқушыларға сілтеме беру</button>
-                    </div>
-                </div>
-
-                <div>
-                    <div class="sidebar-title">Химия Шаблондары</div>
-                    <div class="template-list">
-                        <button class="template-btn"><i class="fas fa-fire" style="color: #ef4444;"></i> Тотығу-тотықсыздану</button>
-                        <button class="template-btn"><i class="fas fa-balance-scale" style="color: var(--btn-yellow);"></i> Стехиометрия</button>
-                        <button class="template-btn"><i class="fas fa-dna" style="color: #a855f7;"></i> Органикалық химия</button>
                     </div>
                 </div>
             </div>
@@ -322,16 +306,72 @@
 
             <div class="room-main">
                 <h3 style="color: var(--btn-yellow); margin-bottom: 1rem; font-size: 1.8rem;"><i class="fas fa-lock"></i> 1-ші Бөлме: Қышқылдық Қақпан</h3>
-                <p style="font-size: 1.2rem; line-height: 1.6; color: #cbd5e1;">
-                    Есік алдында концентрлі күкірт қышқылы (H₂SO₄) төгіліп жатыр. Одан өту мүмкін емес.<br>
-                    Бөлмеде келесі заттар бар: <b>Су (H₂O), Ас содасы (NaHCO₃), Тұз қышқылы (HCl)</b>.<br><br>
-                    Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Заттың атын немесе формуласын жаз)
-                </p>
+                <p style="font-size: 1.2rem; line-height: 1.6; color: #cbd5e1;">Есік алдында концентрлі күкірт қышқылы (H₂SO₄) төгіліп жатыр... Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)</p>
                 <div class="student-input-group">
                     <input type="text" id="ans" placeholder="Өз шешіміңді осында жаз...">
                     <button class="btn-action" onclick="checkQuest()">Тексеру</button>
                 </div>
                 <div id="questMsg" style="margin-top: 15px; font-weight: bold;"></div>
+            </div>
+        </div>
+    </div>
+
+    <div id="video" class="page">
+        <div class="video-dashboard">
+            <div class="video-header">
+                <h2>AI Видео <span>Студиясы</span></h2>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">Нейрожелі арқылы жасалған жоғары сапалы 3D химиялық реакциялар мен түсіндірмелер.</p>
+            </div>
+
+            <div class="video-generator-bar">
+                <input type="text" placeholder="Қандай видео керек? (Мысалы: Натрийдің сумен реакциясын 3D форматта көрсет)">
+                <button class="btn-ai-video" onclick="alert('ИИ видео генерациялауда. Бұл процесс 1-2 минут алуы мүмкін...')">
+                    <i class="fas fa-magic"></i> Видео жасау
+                </button>
+            </div>
+
+            <div class="featured-video">
+                <div class="play-pulse" onclick="alert('Видео ойнатылуда...')"><i class="fas fa-play"></i></div>
+                <div class="featured-info">
+                    <span class="ai-badge"><i class="fas fa-robot"></i> AI GENERATED</span>
+                    <h3>Су молекуласының 3D құрылысы және сутектік байланыс</h3>
+                    <p style="color: #cbd5e1;">Бұл видеода су молекуласының (H2O) кеңістіктегі орналасуы және полюстілігі жоғары сапалы 3D анимациямен көрсетілген.</p>
+                </div>
+            </div>
+
+            <h3 style="color: white; margin-bottom: 1.5rem; font-size: 1.5rem; border-bottom: 1px solid var(--border-glass); padding-bottom: 10px;">Дайын сабақтар базасы</h3>
+            
+            <div class="video-grid">
+                <div class="video-card">
+                    <div class="video-thumb t1">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="video-time">02:15</span>
+                    </div>
+                    <div class="video-details">
+                        <h4>Натрийдің сумен реакциясы (Эксперимент)</h4>
+                        <p>Сілтілік металдардың белсенділігін көрсететін виртуалды зертхана.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb t2">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="video-time">04:30</span>
+                    </div>
+                    <div class="video-details">
+                        <h4>Бейорганикалық қосылыстар кластары</h4>
+                        <p>Оксидтер, негіздер, қышқылдар және тұздар туралы қысқаша түсіндірме сабақ.</p>
+                    </div>
+                </div>
+                <div class="video-card">
+                    <div class="video-thumb t3">
+                        <i class="fas fa-play-circle"></i>
+                        <span class="video-time">01:45</span>
+                    </div>
+                    <div class="video-details">
+                        <h4>Тотығу-тотықсыздану реакциясы (Анимация)</h4>
+                        <p>Электрондардың бір атомнан екінші атомға ауысу процесін микродеңгейде көру.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -343,16 +383,10 @@
         <p class="footer-desc">
             Жасанды интеллект күшімен химияны үйренудің жаңа форматы. Конкурсқа арналған концепт.
         </p>
-        
         <div class="footer-social">
-            <a href="https://instagram.com/galimatolla_moldir" target="_blank">
-                <i class="fab fa-instagram"></i> @galimatolla_moldir
-            </a>
-            <a href="mailto:Madu_990@mail.ru">
-                <i class="fas fa-envelope"></i> Madu_990@mail.ru
-            </a>
+            <a href="https://instagram.com/galimatolla_moldir" target="_blank"><i class="fab fa-instagram"></i> @galimatolla_moldir</a>
+            <a href="mailto:Madu_990@mail.ru"><i class="fas fa-envelope"></i> Madu_990@mail.ru</a>
         </div>
-
         <div class="copyright">
             © 2026 ChemEscape AI.<br>
             Designed with <span class="heart">❤️</span> for Chemistry.
@@ -371,61 +405,37 @@
             window.scrollTo(0,0);
         }
 
-        // Мұғалім генерациясы
         function generateContent() {
             const topic = document.getElementById('lessonTopic').value;
-            const cls = document.getElementById('lessonClass').value;
-            const diff = document.getElementById('lessonDiff').value;
-            const rooms = document.getElementById('lessonRooms').value;
             const output = document.getElementById('aiOutput');
 
-            if(!topic) {
-                alert("Өтінемін, алдымен тақырыпты немесе мақсатты енгізіңіз!");
-                document.getElementById('lessonTopic').focus();
-                return;
-            }
+            if(!topic) { alert("Тақырыпты жазыңыз!"); return; }
 
             output.innerHTML += `
                 <div style="text-align: right; margin-bottom: 1rem;">
-                    <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 12px; display: inline-block; text-align: left;">
-                        <b>Тақырып:</b> ${topic}<br>
-                        <b>Параметрлер:</b> ${cls}, ${diff}, ${rooms}
-                    </span>
-                </div>
-                <div class="ai-message" id="loadingMsg" style="border-left-color: var(--btn-yellow);">
-                    <span style="color: var(--btn-yellow); font-family: monospace;"><i class="fas fa-spinner fa-spin"></i> Сценарий құрастырылуда...</span>
+                    <span style="background: rgba(255,255,255,0.1); padding: 10px 15px; border-radius: 12px; display: inline-block;"><b>Тақырып:</b> ${topic}</span>
                 </div>
             `;
-            output.scrollTop = output.scrollHeight;
-
             setTimeout(() => {
-                document.getElementById('loadingMsg').remove();
                 output.innerHTML += `
                     <div class="ai-message">
-                        <span style="color: var(--neon-cyan); font-weight: bold;">Дайын Квест Сценарийі:</span><br><br>
-                        <span style="color: var(--text-muted);">// Бөлме 1: Қауіпсіздік</span><br>
+                        <span style="color: var(--neon-cyan); font-weight: bold;">Квест Дайын!</span><br>
                         <b>Тапсырма:</b> Зертханада сілті төгілді. Оны немен сүрту керек?<br>
-                        <b>Дұрыс жауап:</b> Сұйылтылған сірке қышқылы немесе бор қышқылымен.<br><br>
-                        <span style="color: var(--text-muted);">// Бөлме 2: Теңдеу</span><br>
-                        <b>Тапсырма:</b> Код алу үшін теңдеудің барлық коэффициенттерінің қосындысын тап: Al + HCl -> AlCl3 + H2<br>
-                        <b>Дұрыс жауап:</b> 13 (2Al + 6HCl = 2AlCl3 + 3H2).<br><br>
-                        <i>Оң жақтағы батырмалар арқылы оқушыларға сілтеме жіберіңіз немесе PDF түрінде жүктеңіз.</i>
+                        <b>Жауап:</b> Сірке қышқылымен.
                     </div>
                 `;
                 output.scrollTop = output.scrollHeight;
-            }, 1500);
+            }, 1000);
         }
 
-        // Оқушы тексеруі
         function checkQuest() {
             const val = document.getElementById('ans').value.toLowerCase();
             const msg = document.getElementById('questMsg');
             if(val.includes('сода') || val.includes('nahco3')) {
                 msg.innerHTML = '<span style="color: var(--neon-green);"><i class="fas fa-check"></i> Дұрыс! Сода қышқылды бейтараптандырады. Код: 7</span>';
-                document.getElementById('slot1').innerText = '7';
-                document.getElementById('slot1').classList.add('filled');
+                document.getElementById('slot1').innerText = '7'; document.getElementById('slot1').classList.add('filled');
             } else {
-                msg.innerHTML = '<span style="color: var(--error-red);"><i class="fas fa-times"></i> Қате! Су құйсаң шашырайды, ал HCl - ол да қышқыл. Ойлан!</span>';
+                msg.innerHTML = '<span style="color: var(--error-red);"><i class="fas fa-times"></i> Қате! Ойлан!</span>';
             }
         }
     </script>
