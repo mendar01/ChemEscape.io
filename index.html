@@ -15,7 +15,7 @@
             --accent-yellow: #f59e0b;
             --accent-purple: #8b5cf6;
             --accent-blue: #3b82f6;
-            --neon-cyan: #00e5ff; /* Суреттегі көгілдір түс */
+            --neon-cyan: #00e5ff;
             --text-main: #1e293b;
             --text-muted: #64748b;
             --border-light: #e2e8f0;
@@ -58,12 +58,7 @@
         .nav-btn { background: transparent; border: 1px solid var(--border-light); color: var(--text-main); padding: 0.5rem 1rem; border-radius: 8px; cursor: pointer; transition: 0.3s; font-weight: 600; font-size: 0.9rem; }
         .nav-btn:hover, .nav-btn.active-nav { border-color: var(--primary); color: var(--primary); background: #f0fdfa; }
 
-        /* ИИ Видео Вкладкасы (Жоғарыда) */
-        .video-tab-btn {
-            border-color: var(--accent-purple) !important; 
-            color: var(--accent-purple) !important; 
-            background: rgba(139, 92, 246, 0.05);
-        }
+        .video-tab-btn { border-color: var(--accent-purple) !important; color: var(--accent-purple) !important; background: rgba(139, 92, 246, 0.05); }
         .video-tab-btn:hover { background: var(--accent-purple) !important; color: white !important; }
 
         .lang-switch { display: flex; background: var(--border-light); border-radius: 20px; overflow: hidden; margin-left: 10px; }
@@ -83,12 +78,11 @@
         
         .main-action-buttons { display: flex; justify-content: center; gap: 1rem; margin-bottom: 3rem; flex-wrap: wrap;}
         .btn-large { padding: 15px 30px; font-size: 1.1rem; font-weight: bold; border-radius: 30px; border: none; cursor: pointer; transition: 0.3s; display: flex; align-items: center; gap: 10px; box-shadow: var(--shadow-soft); }
-        .btn-start-quest { background: var(--accent-yellow); color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,0.2);}
+        .btn-start-quest { background: var(--accent-yellow); color: #fff; }
         .btn-start-quest:hover { transform: translateY(-3px); background: #eab308; }
         .btn-share { background: white; color: var(--primary); border: 2px solid var(--primary); }
         .btn-share:hover { background: var(--primary); color: white; }
 
-        /* БАСТЫ БЕТТЕГІ 3 ВКЛАДКА (КАРТОЧКА) */
         .features-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; text-align: left; }
         @media(max-width: 768px) { .features-grid { grid-template-columns: 1fr; } }
         .feature-card { background: var(--bg-panel); border: 1px solid var(--border-light); padding: 2rem; border-radius: 16px; transition: 0.4s; cursor: pointer; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);}
@@ -115,21 +109,26 @@
         .btn-generate { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; font-size: 1.1rem;}
         .btn-generate:hover { background: var(--primary-hover); }
 
-        /* МҰҒАЛІМ НӘТИЖЕСІ (ҚАРА/КӨГІЛДІР СУРЕТТЕГІДЕЙ) */
+        /* МҰҒАЛІМ НӘТИЖЕСІ (ҚАРА/КӨГІЛДІР СУРЕТТЕГІДЕЙ + PDF) */
         .generated-result-container { display: none; margin-top: 2rem; animation: fadeIn 0.5s ease; width: 100%;}
         .btn-ready { background-color: var(--neon-cyan); color: #000; font-weight: bold; padding: 15px; border-radius: 8px; width: 100%; border: none; font-size: 1.1rem; margin-bottom: 2rem; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .result-header { color: var(--neon-cyan); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; }
-        .result-box { background-color: #0a0f16; border-left: 4px solid var(--neon-cyan); border-radius: 0 8px 8px 0; padding: 1.5rem; color: #e2e8f0; margin-bottom: 2rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
+        .result-box { background-color: #0a0f16; border-left: 4px solid var(--neon-cyan); border-radius: 0 8px 8px 0; padding: 1.5rem; color: #e2e8f0; margin-bottom: 1.5rem; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3); }
         .result-box .comment { color: var(--neon-cyan); font-family: monospace; margin-bottom: 8px; display: block;}
         .result-box p { margin-bottom: 10px; line-height: 1.5;}
         .result-box hr { border-color: #1e293b; margin: 15px 0; border-bottom: none;}
-        .btn-copy-link { background-color: var(--neon-cyan); color: #000; font-weight: bold; padding: 15px; border-radius: 8px; width: 100%; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.3s; text-transform: uppercase; }
+        
+        /* Екі батырма (Сілтеме және PDF) */
+        .action-buttons-row { display: flex; gap: 15px; flex-wrap: wrap; }
+        .btn-action-res { font-weight: bold; padding: 15px; border-radius: 8px; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.3s; text-transform: uppercase; flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px; min-width: 200px;}
+        .btn-copy-link { background-color: var(--neon-cyan); color: #000; }
         .btn-copy-link:hover { background-color: #00b8cc; box-shadow: 0 0 15px rgba(0, 229, 255, 0.4);}
+        .btn-download-pdf { background-color: var(--error-red); color: white; }
+        .btn-download-pdf:hover { background-color: #dc2626; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);}
 
         /* === 3. ОҚУШЫ БӨЛІМІ (КІРУ ЖӘНЕ КВЕСТ) === */
         .student-container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
         .student-login-box { background: white; border-radius: 20px; padding: 3rem 2rem; text-align: center; box-shadow: var(--shadow-soft); border: 1px solid var(--border-light); max-width: 500px; margin: 0 auto;}
-        .student-login-box h2 { color: var(--primary); margin-bottom: 1rem; font-size: 2rem;}
         
         .quest-area { display: none; }
         .quest-header { display: flex; justify-content: space-between; align-items: center; background: white; padding: 1rem 2rem; border-radius: 12px; box-shadow: var(--shadow-soft); margin-bottom: 2rem;}
@@ -146,34 +145,29 @@
 
         /* === 4. ИИ ТЕСТ === */
         .test-card { background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .test-question { font-weight: 600; font-size: 1.1rem; margin-bottom: 1rem; color: var(--text-main); }
-        .test-options { display: flex; flex-direction: column; gap: 0.5rem; }
-        .test-option { background: #f8fafc; padding: 10px 15px; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; transition: 0.2s; }
+        .test-option { background: #f8fafc; padding: 10px 15px; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 5px;}
         .test-option:hover { background: #f1f5f9; border-color: var(--primary); }
 
         /* === 5. ИИ ВИДЕО === */
         .video-dashboard { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; text-align: center;}
         .featured-video { width: 100%; height: 400px; background: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000') center/cover; border-radius: 20px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; margin-bottom: 2rem; box-shadow: var(--shadow-soft); }
         .featured-video::after { content:''; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); z-index: 1;}
-        .play-btn { width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; transition: 0.3s; color: var(--accent-purple); font-size: 2rem; padding-left: 5px;}
-        .play-btn:hover { transform: scale(1.1); background: white; box-shadow: 0 0 20px rgba(139, 92, 246, 0.5);}
+        .play-btn { width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; color: var(--accent-purple); font-size: 2rem; padding-left: 5px; transition: 0.3s;}
+        .play-btn:hover { transform: scale(1.1); background: white;}
         .video-title { position: absolute; bottom: 20px; left: 20px; z-index: 2; color: white; text-align: left;}
 
         /* === ПОДВАЛ (FOOTER) === */
         footer { background-color: #0b1120; color: #e2e8f0; padding: 4rem 2rem 2rem 2rem; margin-top: auto; }
         .footer-content { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr 1.2fr; gap: 3rem; margin-bottom: 3rem; }
         @media (max-width: 768px) { .footer-content { grid-template-columns: 1fr; gap: 2rem; text-align: center; } }
-        
         .footer-col h3 { color: white; font-size: 1rem; margin-bottom: 1.5rem; letter-spacing: 1px;}
         .footer-links { list-style: none; padding: 0; }
         .footer-links li { margin-bottom: 1rem; }
         .footer-links a { color: #94a3b8; text-decoration: none; transition: 0.3s;}
         .footer-links a:hover { color: var(--neon-cyan); }
-        
         .contact-card { background-color: #1e293b; border-radius: 16px; padding: 1.5rem; box-shadow: 0 10px 15px rgba(0,0,0,0.3); text-align: left;}
         .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; font-size: 0.95rem; font-weight: 500;}
         .contact-item i { font-size: 1.2rem; color: #cbd5e1; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 50%; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center;}
-        
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; color: #64748b; font-size: 0.9rem;}
         .footer-bottom .icons { margin-bottom: 1rem; display: flex; justify-content: center; gap: 15px;}
         .footer-bottom .icons i { font-size: 1.5rem; cursor: pointer; transition: 0.3s;}
@@ -185,52 +179,56 @@
     <header>
         <div class="logo" onclick="switchPage('landing')"><i class="fas fa-flask"></i> ChemEscape AI</div>
         <div class="nav-right">
-            <button class="nav-btn active-nav" id="nav-landing" onclick="switchPage('landing')">Басты бет</button>
-            <button class="nav-btn" id="nav-student" onclick="switchPage('student')"><i class="fas fa-user-graduate"></i> Оқушы</button>
-            <button class="nav-btn" id="nav-teacher" onclick="switchPage('teacher')"><i class="fas fa-magic"></i> Мұғалім PRO</button>
-            <button class="nav-btn" id="nav-test" onclick="switchPage('test')"><i class="fas fa-list-check"></i> ИИ Тест</button>
+            <button class="nav-btn active-nav" id="nav-landing" onclick="switchPage('landing')" data-kk="Басты бет" data-ru="Главная" data-en="Home">Басты бет</button>
+            <button class="nav-btn" id="nav-student" onclick="switchPage('student')" data-kk="Оқушы" data-ru="Ученик" data-en="Student"><i class="fas fa-user-graduate"></i> Оқушы</button>
+            <button class="nav-btn" id="nav-teacher" onclick="switchPage('teacher')" data-kk="Мұғалім PRO" data-ru="Учитель PRO" data-en="Teacher PRO"><i class="fas fa-magic"></i> Мұғалім PRO</button>
+            <button class="nav-btn" id="nav-test" onclick="switchPage('test')" data-kk="ИИ Тест" data-ru="ИИ Тест" data-en="AI Test"><i class="fas fa-list-check"></i> ИИ Тест</button>
             
-            <button class="nav-btn video-tab-btn" id="nav-video" onclick="switchPage('video')">
+            <button class="nav-btn video-tab-btn" id="nav-video" onclick="switchPage('video')" data-kk="ИИ Видео" data-ru="ИИ Видео" data-en="AI Video">
                 <i class="fas fa-video"></i> ИИ Видео
             </button>
             
             <div class="lang-switch">
-                <button class="lang-btn active">ҚАЗ</button>
-                <button class="lang-btn">РУС</button>
-                <button class="lang-btn">ENG</button>
+                <button class="lang-btn active" data-lang="kk">ҚАЗ</button>
+                <button class="lang-btn" data-lang="ru">РУС</button>
+                <button class="lang-btn" data-lang="en">ENG</button>
             </div>
         </div>
     </header>
 
     <div id="landing" class="page active">
         <div class="hero">
-            <h1>Химияны оқытудың <br><span>Жаңа Эволюциясы</span></h1>
-            <p>Жарқын дизайн, интерактивті квесттер, ИИ видеолар және мұғалімдерге арналған ең қуатты тапсырмалар генераторы.</p>
+            <h1 id="hero-title" data-is-html="true" data-kk="Химияны оқытудың <br><span>Жаңа Эволюциясы</span>" data-ru="Новая Эволюция <br><span>Обучения Химии</span>" data-en="The New Evolution <br><span>of Chemistry Learning</span>">
+                Химияны оқытудың <br><span>Жаңа Эволюциясы</span>
+            </h1>
+            <p id="hero-subtitle" data-kk="Жарқын дизайн, интерактивті квесттер, ИИ видеолар және мұғалімдерге арналған ең қуатты тапсырмалар генераторы." data-ru="Яркий дизайн, интерактивные квесты, ИИ видео и мощнейший генератор заданий для учителей." data-en="Vibrant design, interactive quests, AI videos, and the most powerful task generator for teachers.">
+                Жарқын дизайн, интерактивті квесттер, ИИ видеолар және мұғалімдерге арналған ең қуатты тапсырмалар генераторы.
+            </p>
             
             <div class="main-action-buttons">
                 <button class="btn-large btn-start-quest" onclick="switchPage('student')">
-                    <i class="fas fa-play"></i> Оқушы: Квестке кіру
+                    <i class="fas fa-play"></i> <span data-kk="Оқушы: Квестке кіру" data-ru="Ученик: Начать квест" data-en="Student: Start Quest">Оқушы: Квестке кіру</span>
                 </button>
-                <button class="btn-large btn-share" onclick="alert('Сілтеме көшірілді: https://chemescape.ai/join')">
-                    <i class="fas fa-share-nodes"></i> Оқушыға сілтеме жіберу
+                <button class="btn-large btn-share" onclick="alert('Сілтеме көшірілді / Link copied')">
+                    <i class="fas fa-share-nodes"></i> <span data-kk="Оқушыға сілтеме жіберу" data-ru="Отправить ссылку ученику" data-en="Share link to student">Оқушыға сілтеме жіберу</span>
                 </button>
             </div>
 
             <div class="features-grid">
                 <div class="feature-card" onclick="switchPage('teacher')">
                     <i class="fas fa-bolt" style="color: var(--primary);"></i>
-                    <h3>Ультра-Генератор</h3>
-                    <p>Сабақ жоспарын, ТЖБ/БЖБ және квесттерді 10 секундта құрастырыңыз.</p>
+                    <h3 data-kk="Ультра-Генератор" data-ru="Ультра-Генератор" data-en="Ultra-Generator">Ультра-Генератор</h3>
+                    <p data-kk="Сабақ жоспарын, ТЖБ/БЖБ және квесттерді 10 секундта құрастырыңыз." data-ru="Создавайте планы уроков, тесты и квесты за 10 секунд." data-en="Create lesson plans, tests, and quests in 10 seconds.">Сабақ жоспарын, ТЖБ/БЖБ және квесттерді 10 секундта құрастырыңыз.</p>
                 </div>
                 <div class="feature-card" onclick="switchPage('student')">
                     <i class="fas fa-door-open" style="color: var(--accent-yellow);"></i>
                     <h3>Escape Room Mode</h3>
-                    <p>Оқушылар зертханадан қашып шығу үшін химиялық жұмбақтарды шешеді.</p>
+                    <p data-kk="Оқушылар зертханадан қашып шығу үшін химиялық жұмбақтарды шешеді." data-ru="Ученики решают химические загадки, чтобы выбраться из лаборатории." data-en="Students solve chemistry puzzles to escape the laboratory.">Оқушылар зертханадан қашып шығу үшін химиялық жұмбақтарды шешеді.</p>
                 </div>
                 <div class="feature-card" onclick="switchPage('test')">
                     <i class="fas fa-check-double" style="color: var(--accent-blue);"></i>
-                    <h3>ИИ Тест сұрақтары</h3>
-                    <p>Кез келген тақырыпқа А, В, С нұсқалары бар смарт-тесттер жасаңыз.</p>
+                    <h3 data-kk="ИИ Тест сұрақтары" data-ru="ИИ Тесты" data-en="AI Tests">ИИ Тест сұрақтары</h3>
+                    <p data-kk="Кез келген тақырыпқа А, В, С нұсқалары бар смарт-тесттер жасаңыз." data-ru="Создавайте смарт-тесты с вариантами А, В, С на любую тему." data-en="Create smart tests with A, B, C options for any topic.">Кез келген тақырыпқа А, В, С нұсқалары бар смарт-тесттер жасаңыз.</p>
                 </div>
             </div>
         </div>
@@ -250,21 +248,21 @@
                     <h2 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-magic"></i> ИИ Квест Генераторы</h2>
                     <div class="control-row">
                         <div class="control-group" style="flex: 100%;">
-                            <label class="control-label">Тақырып немесе мақсат:</label>
+                            <label class="control-label" data-kk="Тақырып немесе мақсат:" data-ru="Тема или цель:" data-en="Topic or goal:">Тақырып немесе мақсат:</label>
                             <input type="text" id="lessonTopic" class="control-input" placeholder="Мысалы: Оқушыларға қышқылдарды түсіндіру...">
                         </div>
                     </div>
                     <div class="control-row">
                         <div class="control-group">
-                            <label class="control-label">Бөлмелер саны (3-5):</label>
-                            <select class="control-select"><option>4 бөлме (Стандарт)</option><option>3 бөлме</option></select>
+                            <label class="control-label" data-kk="Бөлмелер саны:" data-ru="Количество комнат:" data-en="Number of rooms:">Бөлмелер саны:</label>
+                            <select class="control-select"><option>4</option><option>3</option></select>
                         </div>
                         <div class="control-group">
-                            <label class="control-label">Тіл:</label>
+                            <label class="control-label" data-kk="Тіл:" data-ru="Язык:" data-en="Language:">Тіл:</label>
                             <select class="control-select"><option>Қазақша</option><option>Орысша</option></select>
                         </div>
                     </div>
-                    <button class="btn-generate" onclick="generateContent()"><i class="fas fa-bolt"></i> Генерациялау</button>
+                    <button class="btn-generate" onclick="generateContent()"><i class="fas fa-bolt"></i> <span data-kk="Генерациялау" data-ru="Генерировать" data-en="Generate">Генерациялау</span></button>
                 </div>
 
                 <div id="aiOutput"></div>
@@ -276,21 +274,10 @@
         <div class="student-container">
             <div id="studentLoginBox" class="student-login-box">
                 <h2><i class="fas fa-user-astronaut"></i> Зертханаға кіру</h2>
-                <p>Экспедицияны бастамас бұрын деректеріңізді енгізіңіз</p>
-                <div style="text-align: left;">
+                <div style="text-align: left; margin-top: 2rem;">
                     <div class="control-group" style="margin-bottom: 1rem;">
                         <label class="control-label">Сенің атың (Есімің):</label>
                         <input type="text" id="studentNameInput" class="control-input" placeholder="Мысалы: Әлихан...">
-                    </div>
-                    <div class="control-row">
-                        <div class="control-group">
-                            <label class="control-label">Сыныбың:</label>
-                            <select id="studentClassSelect" class="control-select"><option>8-сынып</option><option>9-сынып</option></select>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label">Қиындық:</label>
-                            <select id="studentDiffSelect" class="control-select"><option value="medium">Орташа</option><option value="hard">Қиын</option></select>
-                        </div>
                     </div>
                     <button class="btn-generate" style="background: var(--accent-yellow);" onclick="startStudentQuest()">
                         <i class="fas fa-rocket"></i> Квестті Бастау
@@ -300,21 +287,14 @@
 
             <div id="questArea" class="quest-area">
                 <div class="quest-header">
-                    <div class="student-info-badge">
-                        <i class="fas fa-user"></i> <span id="displayStudentName">Оқушы</span>
-                    </div>
-                    <div style="color: var(--text-muted); font-weight: bold;"><i class="fas fa-layer-group"></i> Деңгей: <span id="displayStudentDiff">Орташа</span></div>
+                    <div class="student-info-badge"><i class="fas fa-user"></i> <span id="displayStudentName">Оқушы</span></div>
                 </div>
-
                 <div class="code-slots">
                     <div class="slot" id="slot1">_</div><div class="slot">_</div><div class="slot">_</div><div class="slot">_</div>
                 </div>
-
                 <div class="room-main">
                     <h3 style="color: var(--accent-yellow); margin-bottom: 1rem; font-size: 1.5rem;"><i class="fas fa-lock"></i> 1-ші Бөлме: Қышқылдық Қақпан</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.6; color: var(--text-main);">
-                        <b>Апат!</b> Есік алдында концентрлі күкірт қышқылы төгілді.<br>Қышқылды қауіпсіз бейтараптандыру үшін үстелдегі қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)
-                    </p>
+                    <p style="font-size: 1.1rem; line-height: 1.6;">Есік алдында күкірт қышқылы төгілді... Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)</p>
                     <div class="student-input-group">
                         <input type="text" id="ans" placeholder="Өз шешіміңді жаз...">
                         <button class="btn-action" onclick="checkQuest()">Тексеру</button>
@@ -330,18 +310,8 @@
             <div class="generator-controls" style="margin-bottom: 2rem;">
                 <h2 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-list-check"></i> ИИ Тест Генераторы</h2>
                 <div class="control-row">
-                    <div class="control-group" style="flex: 2;">
-                        <input type="text" class="control-input" placeholder="Тақырыпты жазыңыз (Мысалы: Металдардың қасиеттері)">
-                    </div>
-                    <button class="btn-generate" style="width: auto; padding: 0 30px;" onclick="alert('Тест құрастырылуда...')">Құру</button>
-                </div>
-            </div>
-            <div class="test-card">
-                <div class="test-question">1. Төмендегілердің қайсысы сілтілік металға жатады?</div>
-                <div class="test-options">
-                    <div class="test-option">A) Мыс (Cu)</div>
-                    <div class="test-option" style="border-color: var(--success-green); background: #f0fdf4;">B) Натрий (Na) <i class="fas fa-check" style="color: var(--success-green); float:right;"></i></div>
-                    <div class="test-option">C) Темір (Fe)</div>
+                    <div class="control-group" style="flex: 2;"><input type="text" class="control-input" placeholder="Тақырыпты жазыңыз..."></div>
+                    <button class="btn-generate" style="width: auto; padding: 0 30px;">Құру</button>
                 </div>
             </div>
         </div>
@@ -349,11 +319,9 @@
 
     <div id="video" class="page">
         <div class="video-dashboard">
-            <h2 style="color: var(--text-main); margin-bottom: 1rem; font-size: 2.5rem;">AI Видео <span style="color: var(--accent-purple);">Студиясы</span></h2>
-            <p style="color: var(--text-muted); margin-bottom: 2rem;">Нейрожелі арқылы жасалған жоғары сапалы 3D химиялық реакциялар.</p>
-            
+            <h2 style="color: var(--text-main); margin-bottom: 2rem; font-size: 2.5rem;">AI Видео <span style="color: var(--accent-purple);">Студиясы</span></h2>
             <div class="featured-video">
-                <div class="play-btn" onclick="alert('Видео ойнатылуда...')"><i class="fas fa-play"></i></div>
+                <div class="play-btn"><i class="fas fa-play"></i></div>
                 <div class="video-title">
                     <span style="background: var(--accent-purple); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">AI GENERATED 3D</span>
                     <h2 style="margin-top: 10px;">Су молекуласы және сутектік байланыс</h2>
@@ -365,48 +333,22 @@
     <footer>
         <div class="footer-content">
             <div class="footer-col">
-                <div class="logo" style="color: white; margin-bottom: 1rem; justify-content: flex-start;">
-                    <i class="fas fa-flask" style="color: white;"></i> ChemEscape AI
-                </div>
-                <p style="color: #94a3b8;">Жасанды интеллект күшімен химияны үйренудің жаңа форматы.<br><br>Білімді бағалау емес, түсіндіру маңызды.</p>
+                <div class="logo" style="color: white; margin-bottom: 1rem;"><i class="fas fa-flask" style="color: white;"></i> ChemEscape AI</div>
+                <p style="color: #94a3b8;">Білімді бағалау емес, түсіндіру маңызды.</p>
             </div>
-            
-            <div class="footer-col">
-                <h3>ПЛАТФОРМА</h3>
-                <ul class="footer-links">
-                    <li><a href="#" onclick="switchPage('student')">Оқушыларға (Қадам)</a></li>
-                    <li><a href="#" onclick="switchPage('teacher')">Ұстаздарға</a></li>
-                    <li><a href="#" onclick="switchPage('video')">Бейнесабақтар</a></li>
-                    <li><a href="#" onclick="switchPage('test')">Тесттер</a></li>
-                </ul>
-            </div>
-            
             <div class="footer-col">
                 <div class="contact-card">
                     <h3 style="margin-bottom: 1rem;">БІЗБЕН БАЙЛАНЫС</h3>
-                    <div class="contact-item">
-                        <i class="fab fa-instagram"></i>
-                        <span>@galimatolla_moldir</span>
-                    </div>
-                    <div class="contact-item" style="margin-bottom: 0;">
-                        <i class="fas fa-envelope"></i>
-                        <span>Madu_990@mail.ru</span>
-                    </div>
+                    <div class="contact-item"><i class="fab fa-instagram"></i> <span>@galimatolla_moldir</span></div>
+                    <div class="contact-item"><i class="fas fa-envelope"></i> <span>Madu_990@mail.ru</span></div>
                 </div>
             </div>
         </div>
-        
-        <div class="footer-bottom">
-            <div class="icons">
-                <i class="fab fa-github"></i>
-                <i class="fab fa-telegram"></i>
-            </div>
-            © 2026 ChemEscape AI. Конкурсқа арналған концепт.<br>
-            Designed with <span style="color: #ef4444;">❤️</span> for Chemistry.
-        </div>
+        <div class="footer-bottom">© 2026 ChemEscape AI. Designed with <span style="color: #ef4444;">❤️</span> for Chemistry.</div>
     </footer>
 
     <script>
+        // БЕТТЕРДІ АУЫСТЫРУ
         function switchPage(pageId) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
@@ -418,13 +360,33 @@
             window.scrollTo(0,0);
         }
 
+        // ТІЛ АУЫСТЫРУ ЛОГИКАСЫ (ЖАҢА ЖӘНЕ ЖҰМЫС ІСТЕЙТІН ФУНКЦИЯ)
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
+                // Активті кнопканы өзгерту
                 document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
+                
+                // Тілді алу ('kk', 'ru', 'en')
+                const lang = this.getAttribute('data-lang');
+                
+                // Барлық data-kk, data-ru бар элементтерді тауып, мәтінін ауыстыру
+                document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                    if (el.getAttribute('data-is-html') === 'true') {
+                        el.innerHTML = el.getAttribute('data-' + lang);
+                    } else {
+                        // Егер ішінде иконка <i> болса, оны сақтап қалу үшін:
+                        let iconHtml = '';
+                        const iconEl = el.querySelector('i');
+                        if (iconEl) iconHtml = iconEl.outerHTML + ' ';
+                        
+                        el.innerHTML = iconHtml + el.getAttribute('data-' + lang);
+                    }
+                });
             });
         });
 
+        // МҰҒАЛІМ ГЕНЕРАЦИЯСЫ (СІЛТЕМЕ ЖӘНЕ PDF ЖҮКТЕУ БАТЫРМАЛАРЫМЕН БІРГЕ)
         function generateContent() {
             const topic = document.getElementById('lessonTopic').value;
             const outputArea = document.getElementById('aiOutput');
@@ -453,23 +415,24 @@
                             <p><b>Дұрыс жауап:</b> 13 (2Al + 6HCl = 2AlCl3 + 3H2).</p>
                         </div>
 
-                        <button class="btn-copy-link" onclick="alert('Оқушыларға арналған сілтеме көшірілді: https://chemescape.ai/join')">
-                            <i class="fas fa-copy"></i> ОҚУШЫЛАРҒА СІЛТЕМЕ КӨШІРУ
-                        </button>
+                        <div class="action-buttons-row">
+                            <button class="btn-action-res btn-copy-link" onclick="alert('Сілтеме көшірілді: https://chemescape.ai/join')">
+                                <i class="fas fa-copy"></i> СІЛТЕМЕ КӨШІРУ
+                            </button>
+                            <button class="btn-action-res btn-download-pdf" onclick="alert('PDF файл жүктелуде...')">
+                                <i class="fas fa-file-pdf"></i> PDF ЖҮКТЕУ
+                            </button>
+                        </div>
                     </div>
                 `;
             }, 1200);
         }
 
+        // ОҚУШЫ КВЕСТІ
         function startStudentQuest() {
             const name = document.getElementById('studentNameInput').value;
-            const diffSelect = document.getElementById('studentDiffSelect');
-            const diffText = diffSelect.options[diffSelect.selectedIndex].text;
-
             if(!name.trim()) { alert("Өз есіміңізді жазыңыз!"); return; }
-
             document.getElementById('displayStudentName').innerText = name;
-            document.getElementById('displayStudentDiff').innerText = diffText;
             document.getElementById('studentLoginBox').style.display = 'none';
             document.getElementById('questArea').style.display = 'block';
         }
