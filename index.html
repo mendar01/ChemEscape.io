@@ -109,7 +109,7 @@
         .btn-generate { background: var(--primary); color: white; border: none; padding: 15px; border-radius: 8px; font-weight: bold; cursor: pointer; transition: 0.3s; width: 100%; font-size: 1.1rem;}
         .btn-generate:hover { background: var(--primary-hover); }
 
-        /* МҰҒАЛІМ НӘТИЖЕСІ (ҚАРА/КӨГІЛДІР СУРЕТТЕГІДЕЙ + PDF) */
+        /* МҰҒАЛІМ НӘТИЖЕСІ */
         .generated-result-container { display: none; margin-top: 2rem; animation: fadeIn 0.5s ease; width: 100%;}
         .btn-ready { background-color: var(--neon-cyan); color: #000; font-weight: bold; padding: 15px; border-radius: 8px; width: 100%; border: none; font-size: 1.1rem; margin-bottom: 2rem; display: flex; justify-content: center; align-items: center; gap: 10px; }
         .result-header { color: var(--neon-cyan); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem; }
@@ -118,7 +118,6 @@
         .result-box p { margin-bottom: 10px; line-height: 1.5;}
         .result-box hr { border-color: #1e293b; margin: 15px 0; border-bottom: none;}
         
-        /* Екі батырма (Сілтеме және PDF) */
         .action-buttons-row { display: flex; gap: 15px; flex-wrap: wrap; }
         .btn-action-res { font-weight: bold; padding: 15px; border-radius: 8px; border: none; font-size: 1.1rem; cursor: pointer; transition: 0.3s; text-transform: uppercase; flex: 1; display: flex; justify-content: center; align-items: center; gap: 10px; min-width: 200px;}
         .btn-copy-link { background-color: var(--neon-cyan); color: #000; }
@@ -126,7 +125,7 @@
         .btn-download-pdf { background-color: var(--error-red); color: white; }
         .btn-download-pdf:hover { background-color: #dc2626; box-shadow: 0 0 15px rgba(239, 68, 68, 0.4);}
 
-        /* === 3. ОҚУШЫ БӨЛІМІ (КІРУ ЖӘНЕ КВЕСТ) === */
+        /* === 3. ОҚУШЫ БӨЛІМІ === */
         .student-container { max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
         .student-login-box { background: white; border-radius: 20px; padding: 3rem 2rem; text-align: center; box-shadow: var(--shadow-soft); border: 1px solid var(--border-light); max-width: 500px; margin: 0 auto;}
         
@@ -135,22 +134,26 @@
         .student-info-badge { font-weight: bold; color: var(--primary); display: flex; align-items: center; gap: 10px;}
         
         .code-slots { display: flex; justify-content: center; gap: 15px; margin: 1rem 0 2rem 0; }
-        .slot { width: 60px; height: 70px; background: white; border: 2px solid var(--border-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: var(--border-light); font-family: monospace; }
-        .slot.filled { border-color: var(--success-green); color: var(--success-green); background: #f0fdf4;}
+        .slot { width: 60px; height: 70px; background: white; border: 2px solid var(--border-light); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; color: var(--border-light); font-family: monospace; transition: 0.3s;}
+        .slot.filled { border-color: var(--success-green); color: var(--success-green); background: #f0fdf4; transform: scale(1.05);}
         
-        .room-main { background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); }
+        .room-main { background: white; padding: 2.5rem; border-radius: 16px; border: 1px solid var(--border-light); box-shadow: var(--shadow-soft); animation: fadeIn 0.4s ease;}
         .student-input-group { display: flex; gap: 10px; margin-top: 1.5rem; }
-        .student-input-group input { flex-grow: 1; padding: 15px; border: 2px solid var(--border-light); border-radius: 8px; font-size: 1.1rem; }
+        .student-input-group input { flex-grow: 1; padding: 15px; border: 2px solid var(--border-light); border-radius: 8px; font-size: 1.1rem; outline: none; transition: 0.3s;}
+        .student-input-group input:focus { border-color: var(--primary); }
         .btn-action { background: var(--primary); color: white; font-weight: bold; border: none; padding: 0 30px; border-radius: 8px; cursor: pointer; transition: 0.3s; }
+        .btn-action:hover { background: var(--primary-hover); }
 
         /* === 4. ИИ ТЕСТ === */
-        .test-card { background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); }
-        .test-option { background: #f8fafc; padding: 10px 15px; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 5px;}
+        .test-card { background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 2px 4px rgba(0,0,0,0.02); animation: fadeIn 0.4s ease;}
+        .test-option { background: #f8fafc; padding: 10px 15px; border: 1px solid var(--border-light); border-radius: 8px; cursor: pointer; transition: 0.2s; margin-bottom: 5px; font-size: 1.05rem;}
         .test-option:hover { background: #f1f5f9; border-color: var(--primary); }
+        .test-option.correct { background: #d1fae5; border-color: var(--success-green); color: #065f46; font-weight: bold; pointer-events: none;}
+        .test-option.wrong { background: #fee2e2; border-color: var(--error-red); color: #991b1b; pointer-events: none;}
 
         /* === 5. ИИ ВИДЕО === */
         .video-dashboard { max-width: 1000px; margin: 2rem auto; padding: 0 1rem; text-align: center;}
-        .featured-video { width: 100%; height: 400px; background: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000') center/cover; border-radius: 20px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; margin-bottom: 2rem; box-shadow: var(--shadow-soft); }
+        .featured-video { width: 100%; height: 500px; background: url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000') center/cover; border-radius: 20px; display: flex; justify-content: center; align-items: center; position: relative; overflow: hidden; margin-bottom: 2rem; box-shadow: var(--shadow-soft); }
         .featured-video::after { content:''; position: absolute; top:0; left:0; right:0; bottom:0; background: rgba(0,0,0,0.4); z-index: 1;}
         .play-btn { width: 80px; height: 80px; background: rgba(255,255,255,0.9); border-radius: 50%; display: flex; justify-content: center; align-items: center; cursor: pointer; z-index: 2; color: var(--accent-purple); font-size: 2rem; padding-left: 5px; transition: 0.3s;}
         .play-btn:hover { transform: scale(1.1); background: white;}
@@ -209,7 +212,7 @@
                 <button class="btn-large btn-start-quest" onclick="switchPage('student')">
                     <i class="fas fa-play"></i> <span data-kk="Оқушы: Квестке кіру" data-ru="Ученик: Начать квест" data-en="Student: Start Quest">Оқушы: Квестке кіру</span>
                 </button>
-                <button class="btn-large btn-share" onclick="alert('Сілтеме көшірілді / Link copied')">
+                <button class="btn-large btn-share" onclick="alert('Сілтеме көшірілді: https://chemescape.ai/join')">
                     <i class="fas fa-share-nodes"></i> <span data-kk="Оқушыға сілтеме жіберу" data-ru="Отправить ссылку ученику" data-en="Share link to student">Оқушыға сілтеме жіберу</span>
                 </button>
             </div>
@@ -237,10 +240,10 @@
     <div id="teacher" class="page">
         <div class="dashboard-layout">
             <div class="left-sidebar">
-                <button class="btn-generate" style="margin-bottom: 2rem;" onclick="location.reload()"><i class="fas fa-plus"></i> Жаңа Жоба</button>
+                <button class="btn-generate" style="margin-bottom: 2rem;" onclick="resetTeacherPanel()"><i class="fas fa-plus"></i> Жаңа Жоба</button>
                 <div class="sidebar-title">Соңғы сабақтар</div>
-                <div class="history-item"><i class="fas fa-file-alt"></i> 8-сынып: Тұздар гидролизі</div>
-                <div class="history-item"><i class="fas fa-gamepad"></i> Escape Quest: Металдар</div>
+                <div class="history-item" onclick="loadHistory('8-сынып: Тұздар гидролизі')"><i class="fas fa-file-alt"></i> 8-сынып: Тұздар гидролизі</div>
+                <div class="history-item" onclick="loadHistory('Escape Quest: Металдар қасиеті')"><i class="fas fa-gamepad"></i> Escape Quest: Металдар</div>
             </div>
 
             <div class="main-workspace">
@@ -255,7 +258,7 @@
                     <div class="control-row">
                         <div class="control-group">
                             <label class="control-label" data-kk="Бөлмелер саны:" data-ru="Количество комнат:" data-en="Number of rooms:">Бөлмелер саны:</label>
-                            <select class="control-select"><option>4</option><option>3</option></select>
+                            <select class="control-select"><option>4</option><option>3</option><option>5</option></select>
                         </div>
                         <div class="control-group">
                             <label class="control-label" data-kk="Тіл:" data-ru="Язык:" data-en="Language:">Тіл:</label>
@@ -290,16 +293,26 @@
                     <div class="student-info-badge"><i class="fas fa-user"></i> <span id="displayStudentName">Оқушы</span></div>
                 </div>
                 <div class="code-slots">
-                    <div class="slot" id="slot1">_</div><div class="slot">_</div><div class="slot">_</div><div class="slot">_</div>
+                    <div class="slot" id="slot0">_</div>
+                    <div class="slot" id="slot1">_</div>
+                    <div class="slot" id="slot2">_</div>
+                    <div class="slot" id="slot3">_</div>
                 </div>
-                <div class="room-main">
-                    <h3 style="color: var(--accent-yellow); margin-bottom: 1rem; font-size: 1.5rem;"><i class="fas fa-lock"></i> 1-ші Бөлме: Қышқылдық Қақпан</h3>
-                    <p style="font-size: 1.1rem; line-height: 1.6;">Есік алдында күкірт қышқылы төгілді... Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)</p>
-                    <div class="student-input-group">
+                
+                <div class="room-main" id="roomContent">
+                    <h3 id="roomTitle" style="color: var(--accent-yellow); margin-bottom: 1rem; font-size: 1.5rem;"><i class="fas fa-lock"></i> 1-ші Бөлме: Қышқылдық Қақпан</h3>
+                    <p id="roomDesc" style="font-size: 1.1rem; line-height: 1.6;">Есік алдында күкірт қышқылы төгілді... Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)</p>
+                    
+                    <div id="inputSection" class="student-input-group">
                         <input type="text" id="ans" placeholder="Өз шешіміңді жаз...">
                         <button class="btn-action" onclick="checkQuest()">Тексеру</button>
                     </div>
+                    
                     <div id="questMsg" style="margin-top: 15px; font-weight: bold;"></div>
+                    
+                    <button id="nextRoomBtn" class="btn-generate" style="background: var(--accent-yellow); display: none; margin-top: 15px;" onclick="nextRoom()">
+                        Келесі бөлмеге өту <i class="fas fa-arrow-right"></i>
+                    </button>
                 </div>
             </div>
         </div>
@@ -310,20 +323,22 @@
             <div class="generator-controls" style="margin-bottom: 2rem;">
                 <h2 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-list-check"></i> ИИ Тест Генераторы</h2>
                 <div class="control-row">
-                    <div class="control-group" style="flex: 2;"><input type="text" class="control-input" placeholder="Тақырыпты жазыңыз..."></div>
-                    <button class="btn-generate" style="width: auto; padding: 0 30px;">Құру</button>
+                    <div class="control-group" style="flex: 2;"><input type="text" id="testTopicInput" class="control-input" placeholder="Мысалы: Органикалық химия негіздері..."></div>
+                    <button class="btn-generate" style="width: auto; padding: 0 30px;" onclick="generateTest()">Құру</button>
                 </div>
             </div>
+            
+            <div id="testOutputArea"></div>
         </div>
     </div>
 
     <div id="video" class="page">
         <div class="video-dashboard">
             <h2 style="color: var(--text-main); margin-bottom: 2rem; font-size: 2.5rem;">AI Видео <span style="color: var(--accent-purple);">Студиясы</span></h2>
-            <div class="featured-video">
-                <div class="play-btn"><i class="fas fa-play"></i></div>
-                <div class="video-title">
-                    <span style="background: var(--accent-purple); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem;">AI GENERATED 3D</span>
+            <div class="featured-video" id="videoContainer">
+                <div class="play-btn" onclick="playAIVideo()"><i class="fas fa-play"></i></div>
+                <div class="video-title" id="videoTitleOverlay">
+                    <span style="background: var(--accent-purple); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">AI GENERATED 3D</span>
                     <h2 style="margin-top: 10px;">Су молекуласы және сутектік байланыс</h2>
                 </div>
             </div>
@@ -360,33 +375,36 @@
             window.scrollTo(0,0);
         }
 
-        // ТІЛ АУЫСТЫРУ ЛОГИКАСЫ (ЖАҢА ЖӘНЕ ЖҰМЫС ІСТЕЙТІН ФУНКЦИЯ)
+        // ТІЛ АУЫСТЫРУ
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.addEventListener('click', function() {
-                // Активті кнопканы өзгерту
                 document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
                 this.classList.add('active');
                 
-                // Тілді алу ('kk', 'ru', 'en')
                 const lang = this.getAttribute('data-lang');
-                
-                // Барлық data-kk, data-ru бар элементтерді тауып, мәтінін ауыстыру
                 document.querySelectorAll('[data-' + lang + ']').forEach(el => {
                     if (el.getAttribute('data-is-html') === 'true') {
                         el.innerHTML = el.getAttribute('data-' + lang);
                     } else {
-                        // Егер ішінде иконка <i> болса, оны сақтап қалу үшін:
                         let iconHtml = '';
                         const iconEl = el.querySelector('i');
                         if (iconEl) iconHtml = iconEl.outerHTML + ' ';
-                        
                         el.innerHTML = iconHtml + el.getAttribute('data-' + lang);
                     }
                 });
             });
         });
 
-        // МҰҒАЛІМ ГЕНЕРАЦИЯСЫ (СІЛТЕМЕ ЖӘНЕ PDF ЖҮКТЕУ БАТЫРМАЛАРЫМЕН БІРГЕ)
+        // ================= МҰҒАЛІМ БӨЛІМІ =================
+        function resetTeacherPanel() {
+            document.getElementById('lessonTopic').value = '';
+            document.getElementById('aiOutput').innerHTML = '';
+        }
+
+        function loadHistory(topicText) {
+            document.getElementById('lessonTopic').value = topicText;
+        }
+
         function generateContent() {
             const topic = document.getElementById('lessonTopic').value;
             const outputArea = document.getElementById('aiOutput');
@@ -394,7 +412,7 @@
 
             outputArea.innerHTML = `
                 <div style="text-align: center; margin-top: 2rem; color: var(--primary);">
-                    <i class="fas fa-spinner fa-spin fa-2x"></i><br>Сценарий құрастырылуда...
+                    <i class="fas fa-spinner fa-spin fa-2x"></i><br><br>Сценарий құрастырылуда...
                 </div>
             `;
 
@@ -416,7 +434,7 @@
                         </div>
 
                         <div class="action-buttons-row">
-                            <button class="btn-action-res btn-copy-link" onclick="alert('Сілтеме көшірілді: https://chemescape.ai/join')">
+                            <button class="btn-action-res btn-copy-link" onclick="alert('Сілтеме көшірілді: https://chemescape.ai/join/x8F9a')">
                                 <i class="fas fa-copy"></i> СІЛТЕМЕ КӨШІРУ
                             </button>
                             <button class="btn-action-res btn-download-pdf" onclick="alert('PDF файл жүктелуде...')">
@@ -425,27 +443,139 @@
                         </div>
                     </div>
                 `;
-            }, 1200);
+            }, 1500);
         }
 
-        // ОҚУШЫ КВЕСТІ
+        // ================= ОҚУШЫ КВЕСТІ ЛОГИКАСЫ =================
+        const rooms = [
+            {
+                title: "<i class='fas fa-lock'></i> 1-ші Бөлме: Қышқылдық Қақпан",
+                desc: "Есік алдында күкірт қышқылы төгілді... Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)",
+                answers: ["сода", "ас содасы", "nahco3"],
+                code: "7",
+                successMsg: "Дұрыс! Сода қышқылды бейтараптандырады."
+            },
+            {
+                title: "<i class='fas fa-flask'></i> 2-ші Бөлме: Химиялық Теңдеу",
+                desc: "Жабық сейфті ашу үшін теңдеудің барлық коэффициенттерінің қосындысын тап: <br><br><b>Al + HCl &rarr; AlCl<sub>3</sub> + H<sub>2</sub>&uarr;</b>",
+                answers: ["13"],
+                code: "4",
+                successMsg: "Керемет! 2Al + 6HCl = 2AlCl3 + 3H2. (2+6+2+3 = 13)"
+            },
+            {
+                title: "<i class='fas fa-gem'></i> 3-ші Бөлме: Жұмбақ Металл",
+                desc: "Бұл металл тек «Патша арағында» (царская водка) ғана ериді. Оның латынша атауы немесе таңбасы қандай?",
+                answers: ["aurum", "au", "алтын", "золото"],
+                code: "9",
+                successMsg: "Дұрыс! Бұл алтын (Aurum)."
+            },
+            {
+                title: "<i class='fas fa-wind'></i> 4-ші Бөлме: Өмір Газы",
+                desc: "Зертханадан шығу үшін соңғы код керек. Адам тыныс алатын газдың молярлық массасы қанша? (г/моль)",
+                answers: ["32"],
+                code: "2",
+                successMsg: "Тамаша! Оттегі (O2) молярлық массасы 32 г/моль."
+            }
+        ];
+
+        let currentRoomIndex = 0;
+
         function startStudentQuest() {
             const name = document.getElementById('studentNameInput').value;
             if(!name.trim()) { alert("Өз есіміңізді жазыңыз!"); return; }
             document.getElementById('displayStudentName').innerText = name;
             document.getElementById('studentLoginBox').style.display = 'none';
             document.getElementById('questArea').style.display = 'block';
+            loadRoom(0);
+        }
+
+        function loadRoom(index) {
+            document.getElementById('ans').value = '';
+            document.getElementById('questMsg').innerHTML = '';
+            document.getElementById('nextRoomBtn').style.display = 'none';
+            document.getElementById('inputSection').style.display = 'flex';
+            
+            document.getElementById('roomTitle').innerHTML = rooms[index].title;
+            document.getElementById('roomDesc').innerHTML = rooms[index].desc;
         }
 
         function checkQuest() {
-            const val = document.getElementById('ans').value.toLowerCase();
+            const val = document.getElementById('ans').value.toLowerCase().trim();
             const msg = document.getElementById('questMsg');
-            if(val.includes('сода') || val.includes('nahco3')) {
-                msg.innerHTML = '<span style="color: var(--success-green);"><i class="fas fa-check"></i> Дұрыс! Сода қышқылды бейтараптандырады. Код: 7</span>';
-                document.getElementById('slot1').innerText = '7'; document.getElementById('slot1').classList.add('filled');
-            } else {
-                msg.innerHTML = '<span style="color: var(--error-red);"><i class="fas fa-times"></i> Қате! Ойлан!</span>';
+            const room = rooms[currentRoomIndex];
+            
+            let isCorrect = false;
+            for(let i=0; i<room.answers.length; i++) {
+                if(val.includes(room.answers[i])) { isCorrect = true; break; }
             }
+
+            if(isCorrect) {
+                msg.innerHTML = `<span style="color: var(--success-green);"><i class="fas fa-check-circle"></i> ${room.successMsg} Код: ${room.code}</span>`;
+                
+                // Кодты ұяшыққа жазу
+                const slot = document.getElementById(`slot${currentRoomIndex}`);
+                slot.innerText = room.code;
+                slot.classList.add('filled');
+                
+                document.getElementById('inputSection').style.display = 'none'; // Input жасыру
+                
+                if(currentRoomIndex < rooms.length - 1) {
+                    document.getElementById('nextRoomBtn').style.display = 'block';
+                } else {
+                    setTimeout(() => {
+                        document.getElementById('roomContent').innerHTML = `
+                            <div style="text-align:center;">
+                                <i class="fas fa-trophy" style="font-size: 4rem; color: var(--accent-yellow); margin-bottom:1rem;"></i>
+                                <h2 style="color: var(--success-green);">ҚҰТТЫҚТАЙМЫЗ!</h2>
+                                <p style="font-size: 1.2rem; margin-top: 10px;">Сен барлық кодты (7-4-9-2) жинап, зерт = `
+                    <div class="test-card">
+                        <h3>1. Көмірсутектердің ең қарапайым өкілі қалай аталады?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectAnswer(this, false)">А) Этан</div>
+                            <div class="test-option" onclick="selectAnswer(this, true)">В) Метан</div>
+                            <div class="test-option" onclick="selectAnswer(this, false)">С) Пропан</div>
+                        </div>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h3>2. Құрамында бір қос байланысы бар көмірсутектер қатары:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectAnswer(this, false)">А) Алкандар</div>
+                            <div class="test-option" onclick="selectAnswer(this, false)">В) Алкиндер</div>
+                            <div class="test-option" onclick="selectAnswer(this, true)">С) Алкендер</div>
+                        </div>
+                    </div>
+                `;
+            }, 1200);
+        }
+
+        function selectAnswer(element, isCorrect) {
+            const siblings = element.parentElement.children;
+            for(let i=0; i<siblings.length; i++) {
+                siblings[i].style.pointerEvents = 'none'; // Басқаларын басуға тыйым салу
+            }
+            if(isCorrect) {
+                element.classList.add('correct');
+                element.innerHTML += ' <i class="fas fa-check" style="float:right;"></i>';
+            } else {
+                element.classList.add('wrong');
+                element.innerHTML += ' <i class="fas fa-times" style="float:right;"></i>';
+            }
+        }
+
+        // ================= ИИ ВИДЕО ПЛЕЕР =================
+        function playAIVideo() {
+            const container = document.getElementById('videoContainer');
+            // Суретті алып тастап, орнына YouTube (немесе басқа) бейнені қосу
+            container.style.background = 'black';
+            container.innerHTML = `
+                <iframe width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/aNmGQjE3oEw?autoplay=1&mute=0" 
+                    title="Chemistry 3D Animation" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
         }
     </script>
 </body>
