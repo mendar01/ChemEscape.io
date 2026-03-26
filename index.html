@@ -347,3 +347,361 @@
         </div>
         <div class="footer-bottom">© 2026 ChemEscape AI. Designed with <span style="color: #ef4444;">❤️</span> for Chemistry.</div>
     </footer>
+    <!-- JAVASCRIPT ЛОГИКАСЫ -->
+    <script>
+        // ================= ЖАЛПЫ ФУНКЦИЯЛАР =================
+        
+        // Enter батырмасын басқанда іске қосу үшін
+        function handleEnter(event, func) {
+            if (event.key === "Enter") {
+                event.preventDefault();
+                func();
+            }
+        }
+
+        // Беттерді ауыстыру
+        function switchPage(pageId) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+            
+            document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active-nav'));
+            if(document.getElementById('nav-' + pageId)) {
+                document.getElementById('nav-' + pageId).classList.add('active-nav');
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Тіл ауыстыру логикасы
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.lang-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                
+                const lang = this.getAttribute('data-lang');
+                document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                    // HTML тегтерді сақтау үшін innerHTML қолданамыз
+                    el.innerHTML = el.getAttribute('data-' + lang);
+                });
+            });
+        });
+
+        // Сілтеме көшіру
+        function copyShareLink() {
+            alert('Оқушыға арналған сілтеме көшірілді:\n\nhttps://chemescape.ai/join/quest-4592');
+        }
+
+        // ================= МҰҒАЛІМ PRO БӨЛІМІ =================
+        
+        // Тарихты (History) жүктеу
+        const teacherHistory = [
+            { icon: "fa-file-alt", title: "8-сынып: Тұздар гидролизі" },
+            { icon: "fa-gamepad", title: "Escape Quest: Металдар қасиеті" },
+            { icon: "fa-flask", title: "Органика: Көмірсутектер" }
+        ];
+
+        function renderTeacherHistory() {
+            const list = document.getElementById('teacherHistoryList');
+            list.innerHTML = '';
+            teacherHistory.forEach(item => {
+                list.innerHTML += `<div class="history-item" onclick="loadHistory('${item.title}')"><i class="fas ${item.icon}"></i> ${item.title}</div>`;
+            });
+        }
+        renderTeacherHistory(); // Бастапқыда шақыру
+
+        function loadHistory(topicText) {
+            document.getElementById('lessonTopic').value = topicText;
+        }
+
+        function resetTeacherPanel() {
+            document.getElementById('lessonTopic').value = '';
+            document.getElementById('aiOutput').innerHTML = '';
+        }
+
+        function generateTeacherQuest() {
+            const topic = document.getElementById('lessonTopic').value;
+            const outputArea = document.getElementById('aiOutput');
+            const roomCount = document.getElementById('roomCount').value;
+
+            if(!topic.trim()) { 
+                alert("Тақырыпты немесе мақсатты жазыңыз!"); 
+                document.getElementById('lessonTopic').focus();
+                return; 
+            }
+
+            outputArea.innerHTML = `
+                <div style="text-align: center; margin-top: 3rem; color: var(--primary);">
+                    <i class="fas fa-spinner fa-spin fa-3x"></i>
+                    <p style="margin-top: 1rem; font-weight: bold;">Жасанды интеллект сценарий құрастыруда...</p>
+                </div>
+            `;
+
+            // Имитация загрузки 1.5 сек
+            setTimeout(() => {
+                outputArea.innerHTML = `
+                    <div class="generated-result-container" style="display: block;">
+                        <button class="btn-ready"><i class="fas fa-check"></i> Сәтті құрастырылды! (${roomCount} бөлме)</button>
+                        
+                        <div class="result-header">Генерацияланған Квест: "${topic}"</div>
+                        
+                        <div class="result-box">
+                            <span class="comment">// Room 1: Safety (Қауіпсіздік)</span>
+                            <p><b>Тапсырма:</b> Зертханада сілті төгілді. Оны немен сүрту керек?</p>
+                            <p><b>Дұрыс жауап:</b> Сұйылтылған сірке қышқылы немесе бор қышқылымен.</p>
+                            <hr>
+                            <span class="comment">// Room 2: Equation (Теңдеу)</span>
+                            <p><b>Тапсырма:</b> Код алу үшін теңдеудің барлық коэффициенттерінің қосындысын тап: Al + HCl -> AlCl3 + H2</p>
+                            <p><b>Дұрыс жауап:</b> 13 (2Al + 6HCl = 2AlCl3 + 3H2).</p>
+                            <hr>
+                            <span class="comment">// Room 3: Logic (Логика)</span>
+                            <p><b>Тапсырма:</b> Оттегі мен сутегінің қоспасы қалай аталады?</p>
+                            <p><b>Дұрыс жауап:</b> Күркіреуік газ.</p>
+                        </div>
+
+                        <div class="action-buttons-row">
+                            <button class="btn-action-res btn-copy-link" onclick="copyShareLink()">
+                                <i class="fas fa-copy"></i> СІЛТЕМЕ КӨШІРУ
+                            </button>
+                            <button class="btn-action-res btn-download-pdf" onclick="alert('PDF файл жүктелуде...')">
+                                <i class="fas fa-file-pdf"></i> PDF ЖҮКТЕУ
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }, 1500);
+        }
+
+        // ================= ОҚУШЫ КВЕСТІ =================
+        const questRooms = [
+            {
+                title: "<i class='fas fa-lock'></i> 1-ші Бөлме: Қышқылдық Қақпан",
+                desc: "Есік алдында күкірт қышқылы төгілді... Қышқылды қауіпсіз бейтараптандыру үшін қай затты таңдайсың? (Су, Ас содасы, Тұз қышқылы)",
+                answers: ["сода", "ас содасы", "nahco3"],
+                code: "7",
+                successMsg: "Дұрыс! Сода қышқылды бейтараптандырады."
+            },
+            {
+                title: "<i class='fas fa-flask'></i> 2-ші Бөлме: Химиялық Теңдеу",
+                desc: "Жабық сейфті ашу үшін теңдеудің барлық коэффициенттерінің қосындысын тап:<br><br><b>Al + HCl &rarr; AlCl<sub>3</sub> + H<sub>2</sub>&uarr;</b>",
+                answers: ["13"],
+                code: "4",
+                successMsg: "Керемет! 2Al + 6HCl = 2AlCl3 + 3H2. (2+6+2+3 = 13)"
+            },
+            {
+                title: "<i class='fas fa-gem'></i> 3-ші Бөлме: Жұмбақ Металл",
+                desc: "Бұл металл тек «Патша арағында» (царская водка) ғана ериді. Оның латынша атауы немесе таңбасы қандай?",
+                answers: ["aurum", "au", "алтын", "золото"],
+                code: "9",
+                successMsg: "Дұрыс! Бұл алтын (Aurum)."
+            },
+            {
+                title: "<i class='fas fa-wind'></i> 4-ші Бөлме: Өмір Газы",
+                desc: "Зертханадан шығу үшін соңғы код керек. Адам тыныс алатын газдың молярлық массасы қанша? (г/моль)",
+                answers: ["32"],
+                code: "2",
+                successMsg: "Тамаша! Оттегі (O2) молярлық массасы 32 г/моль."
+            }
+        ];
+
+        let currentRoomIndex = 0;
+
+        function startStudentQuest() {
+            const name = document.getElementById('studentNameInput').value;
+            if(!name.trim()) { 
+                alert("Өз есіміңізді жазыңыз!"); 
+                document.getElementById('studentNameInput').focus();
+                return; 
+            }
+            
+            document.getElementById('displayStudentName').innerText = name;
+            document.getElementById('studentLoginBox').style.display = 'none';
+            document.getElementById('questArea').style.display = 'block';
+            
+            // Ұяшықтарды құру
+            const slotsContainer = document.getElementById('codeSlotsContainer');
+            slotsContainer.innerHTML = '';
+            for(let i=0; i < questRooms.length; i++) {
+                slotsContainer.innerHTML += `<div class="slot" id="slot${i}">_</div>`;
+            }
+            
+            currentRoomIndex = 0;
+            loadRoom(currentRoomIndex);
+        }
+
+        function loadRoom(index) {
+            document.getElementById('questAnswerInput').value = '';
+            document.getElementById('questMsg').innerHTML = '';
+            document.getElementById('nextRoomBtn').style.display = 'none';
+            document.getElementById('inputSection').style.display = 'flex';
+            
+            document.getElementById('roomTitle').innerHTML = questRooms[index].title;
+            document.getElementById('roomDesc').innerHTML = questRooms[index].desc;
+            
+            setTimeout(() => { document.getElementById('questAnswerInput').focus(); }, 100);
+        }
+
+        function checkQuestAnswer() {
+            const val = document.getElementById('questAnswerInput').value.toLowerCase().trim();
+            const msg = document.getElementById('questMsg');
+            const room = questRooms[currentRoomIndex];
+            
+            if(!val) return;
+
+            let isCorrect = false;
+            for(let i=0; i < room.answers.length; i++) {
+                if(val.includes(room.answers[i])) { 
+                    isCorrect = true; 
+                    break; 
+                }
+            }
+
+            if(isCorrect) {
+                msg.innerHTML = `<span style="color: var(--success-green);"><i class="fas fa-check-circle"></i> ${room.successMsg} <b>Алынған код: ${room.code}</b></span>`;
+                
+                // Кодты ұяшыққа жазу
+                const slot = document.getElementById(`slot${currentRoomIndex}`);
+                slot.innerText = room.code;
+                slot.classList.add('filled');
+                
+                document.getElementById('inputSection').style.display = 'none'; // Input жасыру
+                
+                if(currentRoomIndex < questRooms.length - 1) {
+                    document.getElementById('nextRoomBtn').style.display = 'inline-block';
+                    document.getElementById('nextRoomBtn').focus();
+                } else {
+                    // ЖЕҢІС
+                    setTimeout(() => {
+                        const allCodes = questRooms.map(r => r.code).join('-');
+                        document.getElementById('roomContent').innerHTML = `
+                            <div style="text-align:center; animation: fadeIn 0.8s ease;">
+                                <i class="fas fa-trophy" style="font-size: 5rem; color: var(--accent-yellow); margin-bottom:1.5rem;"></i>
+                                <h2 style="color: var(--success-green); font-size: 2rem; margin-bottom: 10px;">ҚҰТТЫҚТАЙМЫЗ!</h2>
+                                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Сен барлық кодты <b>(${allCodes})</b> жинап, зертханадан сәтті шықтың!</p>
+                                <button class="btn-generate" onclick="exitQuest()" style="width: auto; padding: 10px 30px;">Аяқтау</button>
+                            </div>
+                        `;
+                    }, 1500);
+                }
+            } else {
+                msg.innerHTML = '<span style="color: var(--error-red);"><i class="fas fa-times-circle"></i> Қате жауап! Қайта ойланып көр.</span>';
+                document.getElementById('questAnswerInput').classList.add('shake');
+                setTimeout(() => document.getElementById('questAnswerInput').classList.remove('shake'), 400);
+            }
+        }
+
+        function nextRoom() {
+            currentRoomIndex++;
+            loadRoom(currentRoomIndex);
+        }
+
+        function exitQuest() {
+            document.getElementById('questArea').style.display = 'none';
+            document.getElementById('studentLoginBox').style.display = 'block';
+            document.getElementById('studentNameInput').value = '';
+            // Қалпына келтіру
+            document.getElementById('roomContent').innerHTML = `
+                <h3 id="roomTitle" style="color: var(--accent-yellow); margin-bottom: 1rem; font-size: 1.5rem;"></h3>
+                <p id="roomDesc" style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1rem;"></p>
+                <div id="inputSection" class="student-input-group">
+                    <input type="text" id="questAnswerInput" placeholder="Өз шешіміңді жаз..." onkeypress="handleEnter(event, checkQuestAnswer)">
+                    <button class="btn-action" onclick="checkQuestAnswer()">Тексеру</button>
+                </div>
+                <div id="questMsg" style="margin-top: 15px; font-weight: bold; font-size: 1.1rem;"></div>
+                <button id="nextRoomBtn" class="btn-generate" style="background: var(--accent-yellow); display: none; margin-top: 15px;" onclick="nextRoom()">Келесі бөлмеге өту <i class="fas fa-arrow-right"></i></button>
+            `;
+        }
+
+        // ================= ИИ ТЕСТ ГЕНЕРАТОРЫ =================
+        function generateAITest() {
+            const topic = document.getElementById('testTopicInput').value;
+            const output = document.getElementById('testOutputArea');
+            
+            if(!topic.trim()) { 
+                alert("Тақырыпты жазыңыз!"); 
+                document.getElementById('testTopicInput').focus();
+                return; 
+            }
+            
+            output.innerHTML = `
+                <div style="text-align: center; margin-top: 2rem; color: var(--primary);">
+                    <i class="fas fa-spinner fa-spin fa-2x"></i>
+                    <p style="margin-top: 10px; font-weight:bold;">Сұрақтар құрастырылуда...</p>
+                </div>
+            `;
+            
+            setTimeout(() => {
+                output.innerHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "${topic}"
+                    </div>
+                    <div class="test-card">
+                        <h3>1. Көмірсутектердің ең қарапайым өкілі қалай аталады?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) Этан</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">В) Метан</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Пропан</div>
+                        </div>
+                    </div>
+                    
+                    <div class="test-card">
+                        <h3>2. Құрамында бір қос байланысы бар көмірсутектер қатары:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) Алкандар</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Алкиндер</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">С) Алкендер</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. Бензолдың формуласы қандай?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) C6H6</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) C6H12</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) C2H4</div>
+                        </div>
+                    </div>
+                `;
+            }, 1200);
+        }
+
+        function selectTestAnswer(element, isCorrect) {
+            const siblings = element.parentElement.children;
+            // Барлық нұсқаларды блоктау
+            for(let i=0; i<siblings.length; i++) {
+                siblings[i].style.pointerEvents = 'none'; 
+            }
+            
+            if(isCorrect) {
+                element.classList.add('correct');
+                element.innerHTML += ' <i class="fas fa-check" style="float:right;"></i>';
+            } else {
+                element.classList.add('wrong');
+                element.innerHTML += ' <i class="fas fa-times" style="float:right;"></i>';
+                // Дұрыс жауапты автоматты түрде көрсету (қосымша функция)
+                for(let i=0; i<siblings.length; i++) {
+                    if(siblings[i].getAttribute('onclick').includes('true')) {
+                        siblings[i].classList.add('correct');
+                        siblings[i].style.opacity = '0.7';
+                    }
+                }
+            }
+        }
+
+        // ================= ИИ ВИДЕО СТУДИЯСЫ =================
+        function playAIVideo() {
+            const container = document.getElementById('videoContainer');
+            // Суретті алып тастап, орнына YouTube (немесе басқа) бейнені қосу
+            container.style.background = 'black';
+            // Су молекуласының 3D химиялық анимациясы
+            container.innerHTML = `
+                <iframe width="100%" height="100%" 
+                    src="https://www.youtube.com/embed/aNmGQjE3oEw?autoplay=1&mute=0&rel=0" 
+                    title="Chemistry 3D Animation" frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            `;
+        }
+
+    </script>
+</body>
+</html>
