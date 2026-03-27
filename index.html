@@ -160,6 +160,133 @@
         .pdf-info h4 { font-size: 1rem; margin-bottom: 5px; line-height: 1.3; }
         .pdf-info span { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; transition: 0.3s;}
         .pdf-card:hover .pdf-info span { color: var(--error-red); }
+
+                /* === VIDEO LIBRARY YOUTUBE === */
+        .video-sections {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+            text-align: left;
+        }
+
+        .video-class-block {
+            margin-bottom: 2.5rem;
+        }
+
+        .video-class-title {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--text-main);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--border-light);
+            padding-bottom: 10px;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem;
+        }
+
+        .video-card-item {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 14px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: 0.3s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.04);
+        }
+
+        .video-card-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-soft);
+            border-color: var(--accent-purple);
+        }
+
+        .video-thumb {
+            height: 150px;
+            background: linear-gradient(135deg, rgba(139,92,246,0.18), rgba(59,130,246,0.18)),
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&q=80&w=1000') center/cover;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .video-thumb i {
+            width: 58px;
+            height: 58px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.92);
+            color: var(--accent-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.4rem;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+
+        .video-card-content {
+            padding: 1rem;
+        }
+
+        .video-card-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+            line-height: 1.35;
+        }
+
+        .video-card-content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .main-video-player {
+            max-width: 1000px;
+            margin: 2rem auto 1rem auto;
+            padding: 0 1rem;
+        }
+
+        .main-video-frame {
+            background: #000;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-soft);
+            aspect-ratio: 16 / 9;
+        }
+
+        .main-video-frame iframe {
+            width: 100%;
+            height: 100%;
+            display: block;
+            border: none;
+        }
+
+        .video-player-caption {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 16px;
+            padding: 1rem 1.2rem;
+            margin-top: 1rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+            text-align: left;
+        }
+
+        .video-player-caption h3 {
+            margin-bottom: 0.4rem;
+            color: var(--text-main);
+        }
+
+        .video-player-caption p {
+            color: var(--text-muted);
+            margin: 0;
+        }
     </style>
 </head>
 <body>
@@ -413,17 +540,140 @@
         </div>
     </div>
 
-    <!-- ИИ ВИДЕО -->
+        <!-- ИИ ВИДЕО -->
     <div id="video" class="page">
         <div class="video-dashboard">
-            <h2 style="color: var(--text-main); margin-bottom: 2rem; font-size: 2.5rem;">AI Видео <span style="color: var(--accent-purple);" data-kk="Студиясы" data-ru="Студия" data-en="Studio">Студиясы</span></h2>
-            <div class="featured-video" id="videoContainer">
-                <div class="play-btn" onclick="playAIVideo()"><i class="fas fa-play"></i></div>
-                <div class="video-title" id="videoTitleOverlay">
-                    <span style="background: var(--accent-purple); padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; font-weight: bold;">AI GENERATED 3D</span>
-                    <h2 style="margin-top: 10px;" data-kk="Су молекуласы және сутектік байланыс" data-ru="Молекула воды и водородная связь" data-en="Water molecule and hydrogen bond">Су молекуласы және сутектік байланыс</h2>
+            <h2 style="color: var(--text-main); margin-bottom: 1rem; font-size: 2.5rem;">
+                AI Видео <span style="color: var(--accent-purple);" data-kk="Студиясы" data-ru="Студия" data-en="Studio">Студиясы</span>
+            </h2>
+            <p style="color: var(--text-muted); max-width: 800px; margin: 0 auto 2rem auto; font-size: 1.05rem;"
+               data-kk="7, 8 және 9-сыныптарға арналған ИИ бейнесабақтар жинағы"
+               data-ru="Коллекция ИИ видеоуроков для 7, 8 и 9 классов"
+               data-en="AI video lesson collection for grades 7, 8 and 9">
+               7, 8 және 9-сыныптарға арналған ИИ бейнесабақтар жинағы
+            </p>
+        </div>
+
+        <div class="main-video-player">
+            <div class="main-video-frame" id="mainVideoFrame">
+                <iframe
+                    src="https://youtube.com/shorts/kYbfdz9xOb0?si=ZawxeEim1uMyr1dx"
+                    title="ChemEscape AI Video"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <div class="video-player-caption">
+                <h3 id="mainVideoTitle">7 класс — Видео 1</h3>
+                <p id="mainVideoDesc">Здесь будет описание выбранного видео</p>
+            </div>
+        </div>
+
+        <div class="video-sections">
+
+            <!-- 7 класс -->
+            <div class="video-class-block">
+                <div class="video-class-title">
+                    <i class="fas fa-graduation-cap" style="color: var(--accent-purple);"></i>
+                    7 класс
+                </div>
+
+                <div class="video-grid">
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://youtube.com/shorts/kYbfdz9xOb0?si=ZawxeEim1uMyr1dx', '7 класс — Видео 1', 'ИИ видео для 7 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>7 класс — Видео 1</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://youtube.com/shorts/hHtWUVD3g3E?si=7IbbuKWWSlZVcSsl', '7 класс — Видео 2', 'ИИ видео для 7 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>7 класс — Видео 2</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://youtu.be/4tgWrfBukxk?si=8kYq2vksNyVJ5XA4', '7 класс — Видео 3', 'ИИ видео для 7 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>7 класс — Видео 3</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
                 </div>
             </div>
+
+            <!-- 8 класс -->
+            <div class="video-class-block">
+                <div class="video-class-title">
+                    <i class="fas fa-graduation-cap" style="color: var(--primary);"></i>
+                    8 класс
+                </div>
+
+                <div class="video-grid">
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://www.youtube.com/watch?v=VIDEO_ID_8_1', '8 класс — Видео 1', 'ИИ видео для 8 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>8 класс — Видео 1</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 9 класс -->
+            <div class="video-class-block">
+                <div class="video-class-title">
+                    <i class="fas fa-graduation-cap" style="color: var(--accent-blue);"></i>
+                    9 класс
+                </div>
+
+                <div class="video-grid">
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://www.youtube.com/watch?v=VIDEO_ID_9_1', '9 класс — Видео 1', 'ИИ видео для 9 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>9 класс — Видео 1</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://www.youtube.com/watch?v=VIDEO_ID_9_2', '9 класс — Видео 2', 'ИИ видео для 9 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>9 класс — Видео 2</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://www.youtube.com/watch?v=VIDEO_ID_9_3', '9 класс — Видео 3', 'ИИ видео для 9 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>9 класс — Видео 3</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://www.youtube.com/watch?v=VIDEO_ID_9_4', '9 класс — Видео 4', 'ИИ видео для 9 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>9 класс — Видео 4</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+
+                    <div class="video-card-item" onclick="loadYoutubeVideo('https://www.youtube.com/watch?v=VIDEO_ID_9_5', '9 класс — Видео 5', 'ИИ видео для 9 класса')">
+                        <div class="video-thumb"><i class="fas fa-play"></i></div>
+                        <div class="video-card-content">
+                            <h4>9 класс — Видео 5</h4>
+                            <p>YouTube видео</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -784,19 +1034,36 @@
         }
 
         // ================= ИИ ВИДЕО СТУДИЯСЫ =================
-        function playAIVideo() {
-            const container = document.getElementById('videoContainer');
-            // Суретті алып тастап, орнына YouTube (немесе басқа) бейнені қосу
-            container.style.background = 'black';
-            // Су молекуласының 3D химиялық анимациясы
-            container.innerHTML = `
-                <iframe width="100%" height="100%" 
-                    src="https://www.youtube.com/embed/aNmGQjE3oEw?autoplay=1&mute=0&rel=0" 
-                    title="Chemistry 3D Animation" frameborder="0" 
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              function convertYoutubeToEmbed(url) {
+            if (url.includes('youtube.com/watch?v=')) {
+                return url.replace('watch?v=', 'embed/');
+            }
+            if (url.includes('youtu.be/')) {
+                return url.replace('youtu.be/', 'www.youtube.com/embed/');
+            }
+            if (url.includes('youtube.com/embed/')) {
+                return url;
+            }
+            return url;
+        }
+
+        function loadYoutubeVideo(videoUrl, title, description) {
+            const embedUrl = convertYoutubeToEmbed(videoUrl);
+
+            const frame = document.getElementById('mainVideoFrame');
+            frame.innerHTML = `
+                <iframe
+                    src="${embedUrl}?autoplay=1&rel=0"
+                    title="${title}"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                     allowfullscreen>
                 </iframe>
             `;
+
+            document.getElementById('mainVideoTitle').innerText = title;
+            document.getElementById('mainVideoDesc').innerText = description;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
     </script>
