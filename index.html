@@ -652,23 +652,7 @@
                         <span data-kk="Генерациялау" data-ru="Генерировать" data-en="Generate">Генерациялау</span>
                     </button>
                 </div>
-                    <div class="control-row">
-                        <div class="control-group">
-                            <label class="control-label" data-kk="Бөлмелер саны:" data-ru="Количество комнат:" data-en="Number of rooms:">Бөлмелер саны:</label>
-                            <select class="control-select" id="roomCount"><option>4</option><option>3</option><option>5</option></select>
-                        </div>
-                        <div class="control-group">
-                            <label class="control-label" data-kk="Тіл:" data-ru="Язык:" data-en="Language:">Тіл:</label>
-                            <select class="control-select"><option>Қазақша</option><option>Орысша</option><option>English</option></select>
-                        </div>
-                    </div>
-                    <button class="btn-generate" onclick="generateTeacherQuest()"><i class="fas fa-bolt"></i> <span data-kk="Генерациялау" data-ru="Генерировать" data-en="Generate">Генерациялау</span></button>
-                </div>
-
-                <div id="aiOutput"></div>
-            </div>
-        </div>
-    </div>
+        
 
     <!-- ОҚУШЫ БӨЛІМІ -->
     <div id="student" class="page">
@@ -1171,48 +1155,7 @@
             }, 1400);
         }
 
-            outputArea.innerHTML = `
-                <div style="text-align: center; margin-top: 3rem; color: var(--primary);">
-                    <i class="fas fa-spinner fa-spin fa-3x"></i>
-                    <p style="margin-top: 1rem; font-weight: bold;">Жасанды интеллект сценарий құрастыруда...</p>
-                </div>
-            `;
-
-            // Имитация загрузки 1.5 сек
-            setTimeout(() => {
-                outputArea.innerHTML = `
-                    <div class="generated-result-container" style="display: block;">
-                        <button class="btn-ready"><i class="fas fa-check"></i> Сәтті құрастырылды! (${roomCount} бөлме)</button>
-                        
-                        <div class="result-header">Генерацияланған Квест: "${topic}"</div>
-                        
-                        <div class="result-box">
-                            <span class="comment">// Room 1: Safety (Қауіпсіздік)</span>
-                            <p><b>Тапсырма:</b> Зертханада сілті төгілді. Оны немен сүрту керек?</p>
-                            <p><b>Дұрыс жауап:</b> Сұйылтылған сірке қышқылы немесе бор қышқылымен.</p>
-                            <hr>
-                            <span class="comment">// Room 2: Equation (Теңдеу)</span>
-                            <p><b>Тапсырма:</b> Код алу үшін теңдеудің барлық коэффициенттерінің қосындысын тап: Al + HCl -> AlCl3 + H2</p>
-                            <p><b>Дұрыс жауап:</b> 13 (2Al + 6HCl = 2AlCl3 + 3H2).</p>
-                            <hr>
-                            <span class="comment">// Room 3: Logic (Логика)</span>
-                            <p><b>Тапсырма:</b> Оттегі мен сутегінің қоспасы қалай аталады?</p>
-                            <p><b>Дұрыс жауап:</b> Күркіреуік газ.</p>
-                        </div>
-
-                        <div class="action-buttons-row">
-                            <button class="btn-action-res btn-copy-link" onclick="copyShareLink()">
-                                <i class="fas fa-copy"></i> СІЛТЕМЕ КӨШІРУ
-                            </button>
-                            <button class="btn-action-res btn-download-pdf" onclick="alert('PDF файл жүктелуде...')">
-                                <i class="fas fa-file-pdf"></i> PDF ЖҮКТЕУ
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }, 1500);
-        }
-
+        
         // ================= ОҚУШЫ КВЕСТІ =================
         const questRooms = [
             {
