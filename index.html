@@ -298,6 +298,124 @@
             75% { transform: translateX(-6px); }
             100% { transform: translateX(0); }
         }
+                /* === TEACHER PRO PROMPTS === */
+        .prompt-section {
+            margin-top: 1.5rem;
+            background: #f8fafc;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1rem;
+        }
+
+        .prompt-section-title {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: var(--text-main);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .prompt-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .prompt-chip {
+            border: 1px solid var(--border-light);
+            background: white;
+            color: var(--text-main);
+            border-radius: 999px;
+            padding: 10px 14px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .prompt-chip:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+            transform: translateY(-2px);
+        }
+
+        .teacher-extra-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1.2rem;
+        }
+
+        @media(max-width: 900px) {
+            .teacher-extra-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .teacher-extra-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .mini-stat-box {
+            background: white;
+            border: 1px solid var(--border-light);
+            border-radius: 12px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+        }
+
+        .mini-stat-box h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+
+        .mini-stat-box p {
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin: 0;
+        }
+
+        .teacher-tools-row {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .btn-secondary-tool {
+            background: white;
+            border: 1px solid var(--border-light);
+            color: var(--text-main);
+            border-radius: 8px;
+            padding: 10px 14px;
+            font-weight: 700;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn-secondary-tool:hover {
+            border-color: var(--primary);
+            color: var(--primary);
+            background: #f0fdfa;
+        }
+
+        .teacher-note-box {
+            margin-top: 1rem;
+            background: #fffbeb;
+            border: 1px solid #fde68a;
+            color: #92400e;
+            border-radius: 12px;
+            padding: 1rem;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -376,14 +494,164 @@
             </div>
 
             <div class="main-workspace">
-                <div class="generator-controls">
-                    <h2 style="color: var(--primary); margin-bottom: 1.5rem;"><i class="fas fa-magic"></i> <span data-kk="ИИ Квест Генераторы" data-ru="Генератор ИИ Квестов" data-en="AI Quest Generator">ИИ Квест Генераторы</span></h2>
+                             <div class="generator-controls">
+                    <h2 style="color: var(--primary); margin-bottom: 1.5rem;">
+                        <i class="fas fa-magic"></i>
+                        <span data-kk="ИИ Квест Генераторы" data-ru="Генератор ИИ Квестов" data-en="AI Quest Generator">ИИ Квест Генераторы</span>
+                    </h2>
+
                     <div class="control-row">
                         <div class="control-group" style="flex: 100%;">
                             <label class="control-label" data-kk="Тақырып немесе мақсат:" data-ru="Тема или цель:" data-en="Topic or goal:">Тақырып немесе мақсат:</label>
                             <input type="text" id="lessonTopic" class="control-input" placeholder="Мысалы: Оқушыларға қышқылдарды түсіндіру..." onkeypress="handleEnter(event, generateTeacherQuest)">
                         </div>
                     </div>
+
+                    <div class="control-row">
+                        <div class="control-group">
+                            <label class="control-label">Бөлмелер саны:</label>
+                            <select class="control-select" id="roomCount">
+                                <option>4</option>
+                                <option>3</option>
+                                <option>5</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Тіл:</label>
+                            <select class="control-select" id="questLanguage">
+                                <option>Қазақша</option>
+                                <option>Орысша</option>
+                                <option>English</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Сынып:</label>
+                            <select class="control-select" id="questGrade">
+                                <option>7-сынып</option>
+                                <option>8-сынып</option>
+                                <option>9-сынып</option>
+                                <option>10-сынып</option>
+                                <option>11-сынып</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Қиындық деңгейі:</label>
+                            <select class="control-select" id="questDifficulty">
+                                <option>Жеңіл</option>
+                                <option selected>Орташа</option>
+                                <option>Күрделі</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="control-row">
+                        <div class="control-group">
+                            <label class="control-label">Квест форматы:</label>
+                            <select class="control-select" id="questFormat">
+                                <option>Escape Room</option>
+                                <option>Командалық квест</option>
+                                <option>Станциялық ойын</option>
+                                <option>Цифрлық квест</option>
+                                <option>Зертханалық сценарий</option>
+                            </select>
+                        </div>
+
+                        <div class="control-group">
+                            <label class="control-label">Негізгі дағды:</label>
+                            <select class="control-select" id="questSkill">
+                                <option>Есеп шығару</option>
+                                <option>Теңдеу құрастыру</option>
+                                <option>Қауіпсіздік ережелері</option>
+                                <option>Логикалық ойлау</option>
+                                <option>Аралас формат</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="prompt-section">
+                        <div class="prompt-section-title">
+                            <i class="fas fa-wand-magic-sparkles" style="color: var(--accent-purple);"></i>
+                            Дайын промпттар
+                        </div>
+
+                        <div class="prompt-grid">
+                            <button class="prompt-chip" onclick="insertPrompt('8-сыныпқа арналған қышқылдар мен негіздер тақырыбында 4 бөлмелі escape room құрастыр. Әр бөлмеде бір химиялық тапсырма, бір логикалық сұрақ және бір код болсын.')">Қышқылдар мен негіздер</button>
+
+                            <button class="prompt-chip" onclick="insertPrompt('7-сынып оқушыларына арналған зертхана қауіпсіздігі бойынша квест құрастыр. Тапсырмалар жеңіл деңгейде, жауаптары қысқа, код жинау форматы болсын.')">Қауіпсіздік квесті</button>
+
+                            <button class="prompt-chip" onclick="insertPrompt('9-сыныпқа арналған химиялық реакция теңдеулері бойынша күрделі escape room жаса. Әр бөлмеде теңдеуді теңестіру, өнімді табу және сандық код алу керек.')">Теңдеулер квесті</button>
+
+                            <button class="prompt-chip" onclick="insertPrompt('Металдар және бейметалдар тақырыбы бойынша командалық квест құрастыр. 4 бөлме, деңгейі орташа, соңында қорытынды код пен мұғалімге нұсқаулық болсын.')">Металдар мен бейметалдар</button>
+
+                            <button class="prompt-chip" onclick="insertPrompt('СОР/БЖБ алдындағы қайталауға арналған химия квестін жаса. Тапсырмалар тест, қысқа жауап, логика және формула танудан тұрсын.')">Қайталау квесті</button>
+
+                            <button class="prompt-chip" onclick="insertPrompt('Органикалық химия бойынша қызықты escape room құрастыр. Сюжет, 4 бөлме, формула, құрылым, атау беру және реакция сұрақтары болсын.')">Органика</button>
+                        </div>
+                    </div>
+
+                    <div class="prompt-section">
+                        <div class="prompt-section-title">
+                            <i class="fas fa-tags" style="color: var(--accent-blue);"></i>
+                            Жылдам тақырыптар
+                        </div>
+
+                        <div class="prompt-grid">
+                            <button class="prompt-chip" onclick="appendToTopic(' қышқылдар')">Қышқылдар</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' негіздер')">Негіздер</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' тұздар')">Тұздар</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' оксидтер')">Оксидтер</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' химиялық байланыс')">Химиялық байланыс</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' реакция теңдеулері')">Реакция теңдеулері</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' периодтық жүйе')">Периодтық жүйе</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' зертхана қауіпсіздігі')">Зертхана қауіпсіздігі</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' органикалық химия')">Органикалық химия</button>
+                            <button class="prompt-chip" onclick="appendToTopic(' есептер')">Есептер</button>
+                        </div>
+                    </div>
+
+                    <div class="teacher-tools-row">
+                        <button class="btn-secondary-tool" onclick="insertRandomPrompt()">
+                            <i class="fas fa-shuffle"></i> Кездейсоқ промпт
+                        </button>
+                        <button class="btn-secondary-tool" onclick="clearTopicInput()">
+                            <i class="fas fa-eraser"></i> Тазалау
+                        </button>
+                        <button class="btn-secondary-tool" onclick="buildSmartPrompt()">
+                            <i class="fas fa-gears"></i> Смарт промпт жинау
+                        </button>
+                    </div>
+
+                    <div class="teacher-note-box">
+                        <b>Кеңес:</b> Дайын промптты таңдаңыз немесе тақырыпты өзіңіз жазыңыз. Одан кейін сынып, қиындық деңгейі және форматты таңдасаңыз, жүйе мұғалімге ыңғайлы толық квест сценарийін генерациялайды.
+                    </div>
+
+                    <div class="teacher-extra-grid">
+                        <div class="mini-stat-box">
+                            <h4>4-5</h4>
+                            <p>Дайын бөлме сценарийі</p>
+                        </div>
+                        <div class="mini-stat-box">
+                            <h4>10 сек</h4>
+                            <p>Жылдам генерация</p>
+                        </div>
+                        <div class="mini-stat-box">
+                            <h4>PDF</h4>
+                            <p>Экспортқа дайын формат</p>
+                        </div>
+                        <div class="mini-stat-box">
+                            <h4>AI</h4>
+                            <p>Мұғалімге көмекші режим</p>
+                        </div>
+                    </div>
+
+                    <button class="btn-generate" style="margin-top: 1.5rem;" onclick="generateTeacherQuest()">
+                        <i class="fas fa-bolt"></i>
+                        <span data-kk="Генерациялау" data-ru="Генерировать" data-en="Generate">Генерациялау</span>
+                    </button>
+                </div>
                     <div class="control-row">
                         <div class="control-group">
                             <label class="control-label" data-kk="Бөлмелер саны:" data-ru="Количество комнат:" data-en="Number of rooms:">Бөлмелер саны:</label>
@@ -774,17 +1042,134 @@
             document.getElementById('lessonTopic').value = '';
             document.getElementById('aiOutput').innerHTML = '';
         }
+        function insertPrompt(promptText) {
+            const input = document.getElementById('lessonTopic');
+            input.value = promptText;
+            input.focus();
+        }
 
-        function generateTeacherQuest() {
-            const topic = document.getElementById('lessonTopic').value;
+        function appendToTopic(text) {
+            const input = document.getElementById('lessonTopic');
+            input.value = (input.value + ' ' + text).trim();
+            input.focus();
+        }
+
+        function clearTopicInput() {
+            document.getElementById('lessonTopic').value = '';
+            document.getElementById('lessonTopic').focus();
+        }
+
+        const readyPrompts = [
+            '7-сыныпқа арналған зертханалық қауіпсіздік бойынша жеңіл деңгейдегі квест құрастыр. 4 бөлме, қысқа жауаптар, код жинау механикасы болсын.',
+            '8-сыныпқа арналған қышқылдар, негіздер және тұздар тақырыбында escape room жаса. Әр бөлмеде бір теориялық және бір практикалық тапсырма болсын.',
+            '9-сыныпқа арналған химиялық реакция теңдеулері бойынша күрделі квест құрастыр. Теңестіру, өнімді анықтау және сандық код беру керек.',
+            'Органикалық химия бойынша қызықты командалық квест жаса. Формула тану, зат атауын табу және логикалық тапсырмалар болсын.',
+            'БЖБ/ТЖБ-ға дайындыққа арналған аралас химия квестін құрастыр. Тест, қысқа жауап, сәйкестендіру және код жинау қосылсын.'
+        ];
+
+        function insertRandomPrompt() {
+            const randomIndex = Math.floor(Math.random() * readyPrompts.length);
+            document.getElementById('lessonTopic').value = readyPrompts[randomIndex];
+            document.getElementById('lessonTopic').focus();
+        }
+
+        function buildSmartPrompt() {
+            const grade = document.getElementById('questGrade').value;
+            const difficulty = document.getElementById('questDifficulty').value;
+            const format = document.getElementById('questFormat').value;
+            const skill = document.getElementById('questSkill').value;
+            const roomCount = document.getElementById('roomCount').value;
+            const lang = document.getElementById('questLanguage').value;
+            const topic = document.getElementById('lessonTopic').value.trim();
+
+            const smartPrompt = `${grade} үшін ${difficulty.toLowerCase()} деңгейдегі "${format}" форматында химиялық квест құрастыр. Бөлме саны: ${roomCount}. Негізгі дағды: ${skill}. Тіл: ${lang}. ${topic ? 'Негізгі тақырып: ' + topic + '.' : ''} Әр бөлмеде тапсырма, дұрыс жауап, код және қысқа мұғалімге нұсқаулық болсын.`;
+
+            document.getElementById('lessonTopic').value = smartPrompt;
+            document.getElementById('lessonTopic').focus();
+        }
+               function generateTeacherQuest() {
+            const topic = document.getElementById('lessonTopic').value.trim();
             const outputArea = document.getElementById('aiOutput');
             const roomCount = document.getElementById('roomCount').value;
+            const grade = document.getElementById('questGrade').value;
+            const difficulty = document.getElementById('questDifficulty').value;
+            const format = document.getElementById('questFormat').value;
+            const skill = document.getElementById('questSkill').value;
+            const lang = document.getElementById('questLanguage').value;
 
-            if(!topic.trim()) { 
-                alert("Тақырыпты немесе мақсатты жазыңыз!"); 
+            if(!topic) { 
+                alert("Тақырыпты немесе дайын промптты таңдаңыз!"); 
                 document.getElementById('lessonTopic').focus();
                 return; 
             }
+
+            outputArea.innerHTML = `
+                <div style="text-align: center; margin-top: 3rem; color: var(--primary);">
+                    <i class="fas fa-spinner fa-spin fa-3x"></i>
+                    <p style="margin-top: 1rem; font-weight: bold;">Жасанды интеллект квест сценарийін құрастыруда...</p>
+                </div>
+            `;
+
+            setTimeout(() => {
+                outputArea.innerHTML = `
+                    <div class="generated-result-container" style="display: block;">
+                        <button class="btn-ready"><i class="fas fa-check"></i> Сәтті құрастырылды! (${roomCount} бөлме)</button>
+                        
+                        <div class="result-header">Генерацияланған Квест: "${topic}"</div>
+                        
+                        <div class="result-box">
+                            <span class="comment">// Quest Meta</span>
+                            <p><b>Сынып:</b> ${grade}</p>
+                            <p><b>Қиындық деңгейі:</b> ${difficulty}</p>
+                            <p><b>Формат:</b> ${format}</p>
+                            <p><b>Негізгі дағды:</b> ${skill}</p>
+                            <p><b>Тіл:</b> ${lang}</p>
+                            <hr>
+
+                            <span class="comment">// Room 1: Safety / Theory</span>
+                            <p><b>Тапсырма:</b> Зертханада қышқыл төгілген жағдайда қауіпсіз әрекетті анықта.</p>
+                            <p><b>Дұрыс жауап:</b> Бейтараптандыру және қорғаныс құралдарын пайдалану.</p>
+                            <p><b>Код:</b> 7</p>
+                            <hr>
+
+                            <span class="comment">// Room 2: Equation</span>
+                            <p><b>Тапсырма:</b> Al + HCl → AlCl3 + H2 теңдеуін теңестіріп, коэффициенттер қосындысын тап.</p>
+                            <p><b>Дұрыс жауап:</b> 13</p>
+                            <p><b>Код:</b> 4</p>
+                            <hr>
+
+                            <span class="comment">// Room 3: Logic / Classification</span>
+                            <p><b>Тапсырма:</b> Берілген заттарды оксид, негіз, қышқыл және тұз топтарына бөл.</p>
+                            <p><b>Дұрыс жауап:</b> Жауап тақырыпқа сай кестелік жіктеумен беріледі.</p>
+                            <p><b>Код:</b> 9</p>
+                            <hr>
+
+                            <span class="comment">// Room 4: Final Challenge</span>
+                            <p><b>Тапсырма:</b> Формула бойынша затты анықтап, оның қолданылуын ата.</p>
+                            <p><b>Дұрыс жауап:</b> Тақырыпқа байланысты жеке жауап.</p>
+                            <p><b>Код:</b> 2</p>
+                            <hr>
+
+                            <span class="comment">// Teacher Notes</span>
+                            <p><b>Мұғалімге кеңес:</b> Оқушыларды жұппен немесе топпен жұмыс істетіп, әр бөлмеде уақыт шектеуін 2–4 минут аралығында белгілеңіз.</p>
+                            <p><b>Қорытынды код:</b> 7-4-9-2</p>
+                        </div>
+
+                        <div class="action-buttons-row">
+                            <button class="btn-action-res btn-copy-link" onclick="copyTeacherQuestText()">
+                                <i class="fas fa-copy"></i> СЦЕНАРИЙДІ КӨШІРУ
+                            </button>
+                            <button class="btn-action-res btn-copy-link" onclick="copyShareLink()">
+                                <i class="fas fa-link"></i> СІЛТЕМЕ КӨШІРУ
+                            </button>
+                            <button class="btn-action-res btn-download-pdf" onclick="alert('PDF файл жүктелуде...')">
+                                <i class="fas fa-file-pdf"></i> PDF ЖҮКТЕУ
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }, 1400);
+        }
 
             outputArea.innerHTML = `
                 <div style="text-align: center; margin-top: 3rem; color: var(--primary);">
@@ -1042,6 +1427,12 @@
                     }
                 }
             }
+        }
+                function copyTeacherQuestText() {
+            const outputText = document.getElementById('aiOutput').innerText;
+            navigator.clipboard.writeText(outputText)
+                .then(() => alert('Квест сценарийі көшірілді!'))
+                .catch(() => alert('Көшіру мүмкін болмады.'));
         }
 
               // ================= ИИ ВИДЕО СТУДИЯСЫ =================
