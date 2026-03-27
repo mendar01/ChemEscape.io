@@ -150,6 +150,16 @@
         .contact-item { display: flex; align-items: center; gap: 15px; margin-bottom: 1rem; font-size: 0.95rem; font-weight: 500;}
         .contact-item i { font-size: 1.2rem; color: #cbd5e1; background: rgba(255,255,255,0.05); padding: 12px; border-radius: 50%; width: 45px; height: 45px; display: flex; justify-content: center; align-items: center;}
         .footer-bottom { text-align: center; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; color: #64748b; font-size: 0.9rem;}
+        
+                /* === PDF КІТАПХАНА === */
+        .pdf-library-header { margin-top: 3rem; margin-bottom: 1.5rem; color: var(--text-main); border-bottom: 2px solid var(--border-light); padding-bottom: 10px; display: flex; align-items: center; gap: 10px; font-size: 1.3rem;}
+        .pdf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; }
+        .pdf-card { background: white; border: 1px solid var(--border-light); border-radius: 12px; padding: 1.2rem; display: flex; align-items: center; gap: 15px; text-decoration: none; color: var(--text-main); transition: 0.3s; box-shadow: 0 2px 4px rgba(0,0,0,0.02); cursor: pointer;}
+        .pdf-card:hover { transform: translateY(-5px); box-shadow: var(--shadow-soft); border-color: var(--error-red); }
+        .pdf-icon { font-size: 2.5rem; color: var(--error-red); }
+        .pdf-info h4 { font-size: 1rem; margin-bottom: 5px; line-height: 1.3; }
+        .pdf-info span { font-size: 0.85rem; color: var(--text-muted); font-weight: 600; transition: 0.3s;}
+        .pdf-card:hover .pdf-info span { color: var(--error-red); }
     </style>
 </head>
 <body>
@@ -300,9 +310,12 @@
     </div>
 
     <!-- ИИ ТЕСТ -->
+      <!-- ИИ ТЕСТ ЖӘНЕ ПДФ БАЗАСЫ -->
     <div id="test" class="page">
-        <div class="dashboard-layout" style="grid-template-columns: 1fr; max-width: 900px;">
-            <div class="generator-controls" style="margin-bottom: 2rem;">
+        <div class="dashboard-layout" style="grid-template-columns: 1fr; max-width: 1000px;">
+            
+            <!-- 1. ИИ Генератор блогы (бұрынғыдай жұмыс істейді) -->
+            <div class="generator-controls" style="margin-bottom: 1rem;">
                 <h2 style="color: var(--primary); margin-bottom: 1rem;"><i class="fas fa-list-check"></i> <span data-kk="ИИ Тест Генераторы" data-ru="Генератор ИИ Тестов" data-en="AI Test Generator">ИИ Тест Генераторы</span></h2>
                 <div class="control-row">
                     <div class="control-group" style="flex: 2;">
@@ -313,6 +326,91 @@
             </div>
             
             <div id="testOutputArea"></div>
+
+            <!-- 2. ЖАҢА БӨЛІМ: 15 PDF ФАЙЛ -->
+            <div class="pdf-library-header">
+                <i class="fas fa-database" style="color: var(--primary);"></i> 
+                <b>Офлайн Тесттер Базасы (PDF)</b>
+            </div>
+            
+            <div class="pdf-grid">
+                <!-- 1 -->
+                <a href="files/test1.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>1. Алкандар және Алкендер</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 2 -->
+                <a href="files/test2.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>2. Тұздар гидролизі</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 3 -->
+                <a href="files/test3.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>3. Периодтық жүйе</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 4 -->
+                <a href="files/test4.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>4. Металдардың қасиеттері</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 5 -->
+                <a href="files/test5.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>5. Бейметалдар (O, S, N, P)</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 6 -->
+                <a href="files/test6.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>6. Химиялық байланыс түрлері</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 7 -->
+                <a href="files/test7.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>7. Тотығу-тотықсыздану</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 8 -->
+                <a href="files/test8.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>8. Электролиттік диссоциация</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 9 -->
+                <a href="files/test9.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>9. Спирттер және фенолдар</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 10 -->
+                <a href="files/test10.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>10. Көмірсулар (Глюкоза)</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 11 -->
+                <a href="files/test11.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>11. Аминдер және Аминқышқылдары</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 12 -->
+                <a href="files/test12.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>12. Химиялық кинетика</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 13 -->
+                <a href="files/test13.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>13. Термохимиялық теңдеулер</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 14 -->
+                <a href="files/test14.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>14. Ерітінділер және концентрация</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+                <!-- 15 -->
+                <a href="files/test15.pdf" target="_blank" class="pdf-card">
+                    <i class="fas fa-file-pdf pdf-icon"></i>
+                    <div class="pdf-info"><h4>15. ҰБТ кешенді тест варианты</h4><span>Ашу / Жүктеу</span></div>
+                </a>
+            </div>
+
         </div>
     </div>
 
