@@ -1301,28 +1301,32 @@
         }
 
         // ================= ИИ ТЕСТ ГЕНЕРАТОРЫ =================
-        function generateAITest() {
-            const topic = document.getElementById('testTopicInput').value;
+               function generateAITest() {
+            const topic = document.getElementById('testTopicInput').value.trim().toLowerCase();
             const output = document.getElementById('testOutputArea');
-            
-            if(!topic.trim()) { 
-                alert("Тақырыпты жазыңыз!"); 
+
+            if (!topic) {
+                alert("Тақырыпты жазыңыз!");
                 document.getElementById('testTopicInput').focus();
-                return; 
+                return;
             }
-            
+
             output.innerHTML = `
                 <div style="text-align: center; margin-top: 2rem; color: var(--primary);">
                     <i class="fas fa-spinner fa-spin fa-2x"></i>
                     <p style="margin-top: 10px; font-weight:bold;">Сұрақтар құрастырылуда...</p>
                 </div>
             `;
-            
-            setTimeout(() => {
-                output.innerHTML = `
+
+            let testHTML = '';
+
+            // ОРГАНИКА
+            if (topic.includes('органик') || topic.includes('көмірсутек') || topic.includes('органика')) {
+                testHTML = `
                     <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
-                        Тақырып: "${topic}"
+                        Тақырып: "Органикалық химия"
                     </div>
+
                     <div class="test-card">
                         <h3>1. Көмірсутектердің ең қарапайым өкілі қалай аталады?</h3>
                         <div style="margin-top: 15px;">
@@ -1331,7 +1335,7 @@
                             <div class="test-option" onclick="selectTestAnswer(this, false)">С) Пропан</div>
                         </div>
                     </div>
-                    
+
                     <div class="test-card">
                         <h3>2. Құрамында бір қос байланысы бар көмірсутектер қатары:</h3>
                         <div style="margin-top: 15px;">
@@ -1350,7 +1354,263 @@
                         </div>
                     </div>
                 `;
-            }, 1200);
+            }
+
+            // ОКСИДТЕР
+            else if (topic.includes('оксид')) {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "Оксидтер"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Оксид дегеніміз не?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Екі элементтен тұратын, бірі оттек болатын күрделі зат</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Сутек пен қышқыл қалдығынан тұратын зат</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Металл мен гидроксид тобынан тұратын зат</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Төмендегі заттардың қайсысы негіздік оксид?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) CaO</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) SO3</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) CO2</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. Қышқылдық оксидті көрсетіңіз:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) Na2O</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">В) P2O5</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) MgO</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ҚЫШҚЫЛДАР
+            else if (topic.includes('қышқыл') || topic.includes('кислот')) {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "Қышқылдар"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Қышқылдардың құрамында міндетті түрде болатын элемент:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Сутек</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Азот</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Кальций</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Тұз қышқылының формуласы:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) HCl</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) H2SO4</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) HNO3</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. Лакмус қышқыл ортада қандай түске боялады?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Қызыл</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Көк</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Жасыл</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // НЕГІЗДЕР
+            else if (topic.includes('негіз') || topic.includes('основан')) {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "Негіздер"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Негіздердің құрамында болатын топ:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) OH</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) CO3</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) SO4</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Сілтіні көрсетіңіз:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) NaOH</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Cu(OH)2</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Fe(OH)3</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. Фенолфталеин сілтілік ортада қандай түске боялады?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) Түссіз</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">В) Таңқурай түсті</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Сары</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ТҰЗДАР
+            else if (topic.includes('тұз') || topic.includes('соль')) {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "Тұздар"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Тұз дегеніміз:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Металл атомы мен қышқыл қалдығынан тұратын күрделі зат</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Тек сутектен тұратын зат</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Тек оттектен тұратын зат</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Орта тұзды көрсетіңіз:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Na2SO4</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) H2SO4</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) NaOH</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. Ас тұзының формуласы:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) NaCl</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) KClO3</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) CaCO3</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ХИМИЯЛЫҚ БАЙЛАНЫС
+            else if (topic.includes('байланыс') || topic.includes('связ')) {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "Химиялық байланыс"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Иондық байланыс қай затта кездеседі?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) NaCl</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) H2</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) O2</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Ковалентті полюссіз байланыс мысалы:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) HCl</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">В) O2</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) NaF</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. Металдық байланыс қай заттарға тән?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Металдарға</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Қышқылдарға</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Бейметалдарға</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // ПЕРИОДТЫҚ ЖҮЙЕ
+            else if (topic.includes('период') || topic.includes('атом') || topic.includes('элемент')) {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "Периодтық жүйе және атом құрылысы"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Атом ядросында не болады?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Протон мен нейтрон</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Электрон мен протон</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Тек электрон</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Периодтық жүйедегі реттік нөмір нені білдіреді?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Протон санын</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Нейтрон санын</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Молекула санын</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. 2-периодта қанша элемент бар?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) 2</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">В) 8</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) 18</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            // УНИВЕРСАЛДЫ ТЕСТ
+            else {
+                testHTML = `
+                    <div style="margin-bottom: 1.5rem; color: var(--primary); font-weight:bold; font-size: 1.2rem;">
+                        Тақырып: "${topic}"
+                    </div>
+
+                    <div class="test-card">
+                        <h3>1. Химия нені зерттейді?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Заттардың құрамы, құрылысы және қасиеттерін</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Тек ғарышты</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Тек өсімдіктерді</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>2. Заттың ең кіші бөлшегі:</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">А) Пробирка</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">В) Атом</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Колба</div>
+                        </div>
+                    </div>
+
+                    <div class="test-card">
+                        <h3>3. H2O дегеніміз не?</h3>
+                        <div style="margin-top: 15px;">
+                            <div class="test-option" onclick="selectTestAnswer(this, true)">А) Су</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">В) Оттек</div>
+                            <div class="test-option" onclick="selectTestAnswer(this, false)">С) Сутек</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            setTimeout(() => {
+                output.innerHTML = testHTML;
+            }, 1000);
         }
 
         function selectTestAnswer(element, isCorrect) {
