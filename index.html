@@ -416,6 +416,139 @@
             font-size: 0.95rem;
             line-height: 1.5;
         }
+
+                /* === MODERN FOOTER === */
+        .modern-footer {
+            background: #0b1120;
+            color: #cbd5e1;
+            padding: 4rem 2rem 2rem;
+            margin-top: auto;
+        }
+
+        .modern-footer-content {
+            max-width: 1300px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.2fr 0.9fr 1.3fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .modern-footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: white;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .modern-footer-logo i {
+            color: white;
+            font-size: 2rem;
+        }
+
+        .modern-footer-text {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #93a4c3;
+            max-width: 320px;
+        }
+
+        .modern-footer-title {
+            color: white;
+            font-size: 1.1rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.5px;
+        }
+
+        .modern-footer-links {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .modern-footer-links a {
+            color: #9fb3d9;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: 0.25s;
+        }
+
+        .modern-footer-links a:hover {
+            color: white;
+            transform: translateX(4px);
+        }
+
+        .contact-box {
+            background: #151d33;
+            border: 1px solid rgba(255,255,255,0.05);
+            border-radius: 22px;
+            padding: 2rem;
+        }
+
+        .modern-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+            margin-bottom: 1.5rem;
+            color: #9fb3d9;
+            font-size: 1rem;
+        }
+
+        .modern-contact-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .modern-contact-icon {
+            width: 54px;
+            height: 54px;
+            border-radius: 50%;
+            background: #202b45;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .modern-footer-bottom {
+            max-width: 1300px;
+            margin: 3rem auto 0;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+            text-align: center;
+            color: #6f819f;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .modern-footer-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .modern-footer-text {
+                max-width: 100%;
+            }
+        }
+                .footer-mini-photo-wrap {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 1rem;
+        }
+
+        .footer-mini-photo {
+            width: 72px;
+            height: 72px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 3px solid rgba(255,255,255,0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+        }
     </style>
 </head>
 <body>
@@ -944,22 +1077,56 @@
         </div>
     </div>
 
-    <!-- ФУТЕР -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-col">
-                <div class="logo" style="color: white; margin-bottom: 1rem;"><i class="fas fa-flask" style="color: white;"></i> ChemEscape AI</div>
-                <p style="color: #94a3b8;" data-kk="Білімді бағалау емес, түсіндіру маңызды." data-ru="Важно не оценивать знания, а объяснять их." data-en="Explaining is more important than evaluating.">Білімді бағалау емес, түсіндіру маңызды.</p>
+      <!-- ФУТЕР -->
+    <footer class="modern-footer">
+        <div class="modern-footer-content">
+            <div class="modern-footer-col">
+                <div class="modern-footer-logo">
+                    <i class="fas fa-flask"></i>
+                    <span>ChemEscape AI</span>
+                </div>
+                <p class="modern-footer-text">
+                    Жасанды интеллект күшімен химияны үйренудің жаңа форматы.
+                    Білімді бағалау емес, түсіндіру маңызды.
+                </p>
             </div>
-            <div class="footer-col">
-                <div class="contact-card">
-                    <h3 style="margin-bottom: 1rem;" data-kk="БІЗБЕН БАЙЛАНЫС" data-ru="СВЯЗЬ С НАМИ" data-en="CONTACT US">БІЗБЕН БАЙЛАНЫС</h3>
-                    <div class="contact-item"><i class="fab fa-instagram"></i> <span>@galimatolla_moldir</span></div>
-                    <div class="contact-item"><i class="fas fa-envelope"></i> <span>Madu_990@mail.ru</span></div>
+
+            <div class="modern-footer-col">
+                <h3 class="modern-footer-title">ПЛАТФОРМА</h3>
+                <div class="modern-footer-links">
+                    <a href="#" onclick="switchPage('student')">Оқушыларға (Квест)</a>
+                    <a href="#" onclick="switchPage('teacher')">Мұғалімдерге</a>
+                    <a href="#" onclick="switchPage('video')">Бейнесабақтар</a>
+                    <a href="#" onclick="switchPage('test')">Тесттер</a>
+                </div>
+            </div>
+
+                       <div class="modern-footer-col contact-box">
+                <div class="footer-mini-photo-wrap">
+                    <img src="images/profile.jpg" alt="Teacher Photo" class="footer-mini-photo">
+                </div>
+
+                <h3 class="modern-footer-title">БІЗБЕН БАЙЛАНЫС</h3>
+
+                <div class="modern-contact-item">
+                    <div class="modern-contact-icon">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <span>@galimatolla_moldir</span>
+                </div>
+
+                <div class="modern-contact-item">
+                    <div class="modern-contact-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <span>Madu_990@mail.ru</span>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom">© 2026 ChemEscape AI. Designed with <span style="color: #ef4444;">❤️</span> for Chemistry.</div>
+
+        <div class="modern-footer-bottom">
+            © 2026 ChemEscape AI. Designed with <span style="color:#ef4444;">❤️</span> for Chemistry.
+        </div>
     </footer>
     <!-- JAVASCRIPT ЛОГИКАСЫ -->
     <script>
